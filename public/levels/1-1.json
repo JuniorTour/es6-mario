@@ -1,0 +1,22 @@
+{
+  "background": [
+    {
+      "title": "sky",
+      "ranges": [
+        [
+          0, 25,
+          0, 14
+        ]
+      ]
+    },
+    {
+      "title": "ground",
+      "ranges": [
+        [
+          0, 25,
+          12, 14
+        ]
+      ]
+    }
+  ]
+}
