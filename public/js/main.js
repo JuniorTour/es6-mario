@@ -1,52 +1,45 @@
 import Compositor from './compositor.js'
+import Timer from './Timer.js'
 import {loadLevel} from './loader.js'
 import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
-import {createBackgroundLayer} from './layers.js'
+import {createBackgroundLayer, createSpriteLayer} from './layers.js'
+import {createMario} from './entities.js'
 
 const canvas = document.getElementById('screen')
 const context = canvas.getContext('2d')
 
 
-function createSpriteLayer(sprite, pos) {
-    return function drawSpriteLayer(context) {
-        for (let i = 0; i < 20; ++i) {
-            sprite.draw('idle', context, pos.x + i * 16, pos.y)
-        }
-    }
-}
-
-
 Promise.all([
-    loadMarioSprite(),
+    createMario(),
     loadBackgroundSprites(),
     loadLevel('1-1')
 ])
-    .then(([marioSprite, backgroundSprites, level]) => {
+    .then(([mario, backgroundSprites, level]) => {
         const comp = new Compositor()
 
         const backgroundLayer = createBackgroundLayer(level.background, backgroundSprites)
-        comp.layers.push(backgroundLayer)
+        // comp.layers.push(backgroundLayer)
 
-        const pos = {
-            x: 0,
-            y: 0
-        }
+        // const gravity = 0.5
+        // mario.pos.set(60,180)
+        // mario.vel.set(2,-10)
 
-        const spriteLayer = createSpriteLayer(marioSprite, pos)
+        const gravity = 30;
+        mario.pos.set(64, 180);
+        mario.vel.set(200, -600);
+
+        const spriteLayer = createSpriteLayer(mario)
         comp.layers.push(spriteLayer)
 
-        function update(DOMHighResTimeStamp) {
-            // context.drawImage(backgroundBuffer, 0, 0)
-            comp.draw(context)
+        const timer = new Timer(1/60)
 
-            pos.x += 2
-            pos.y += 2
-            // marioSprite.draw('idle', context, pos.x, pos.y)
-
-            requestAnimationFrame(update)
+        timer.update = function update(deltaTime) {
+                comp.draw(context)
+                mario.update(deltaTime)
+                mario.vel.y += gravity
         }
 
-        update()
-        // marioSprite.draw('idle',context,80,80)
+        timer.start()
+
     })
 
