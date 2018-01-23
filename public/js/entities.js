@@ -1,4 +1,6 @@
 import Entity from './Entity.js'
+import Velocity from './traits/Velocity.js'
+import Jump from './traits/Jump.js'
 import {loadMarioSprite} from './sprites.js'
 
 export function createMario() {
@@ -6,15 +8,12 @@ export function createMario() {
         .then(sprite => {
             const mario = new Entity()
 
+            // debugger
+            mario.addTrait(new Velocity())
+            mario.addTrait(new Jump())
+
             mario.draw = function drawMario(context) {
                 sprite.draw('idle', context, this.pos.x, this.pos.y)
-            }
-
-            mario.update = function updateMario (deltaTime) {
-                // debugger
-                mario.pos.x += mario.vel.x * deltaTime
-                mario.pos.y += mario.vel.y * deltaTime
-                // Y axis is different in direction！
             }
 
             return mario
