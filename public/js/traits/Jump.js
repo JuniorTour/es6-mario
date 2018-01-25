@@ -21,9 +21,7 @@ export default class Jump extends Trait {
 
     update(entity, deltaTime) {
         if (this.engageTime > 0) {
-            // debugger
             entity.vel.y = -this.velocity
-            console.log(entity.vel.y)
             /*If keep pressing the key, the engageTime (total time allow to  pressing key ) will decrease in a row until less than 0, which means the total time of pressing a key is bigger than the allow duration( this. duration = 0.5 (second)), so the entity.vel.y should not decrease anymore, in other words, the mario should not travel up anymore.*/
             this.engageTime -= deltaTime
         }

@@ -176,5 +176,19 @@ if (积累的时间 > 1/60) {
 }
 ```
 
+5. ES6 - Data Structure
+
+> Map
+
+> Set
+
+6. Semicolon or Not?
+
+```
+input.listenTo(window);
+/*without the prev ;, this sentence will be parsed as "input.listenTo(x)[].forEach(...)", and get error.*/
+
+        ['mousedown', 'mousemove'].forEach(eventName => {
+```
 
 ## File Structure
