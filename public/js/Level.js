@@ -7,9 +7,9 @@ export default class Level {
         this.gravity = 2000;
         this.comp = new Compositor()
         this.entities = new Set()
-        this.titles = new Matrix()
+        this.tiles = new Matrix()
 
-        this.tileCollider = new TileCollider(this.titles)
+        this.tileCollider = new TileCollider(this.tiles)
     }
 
     update(deltaTime) {

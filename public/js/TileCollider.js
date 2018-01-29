@@ -25,7 +25,7 @@ export default class TileCollider {
         )
 
         matches.forEach(match => {
-            if (match.tile.name !== 'ground') {
+            if (match.tile.type !== 'ground') {
                 return;
             }
 
@@ -47,7 +47,7 @@ export default class TileCollider {
     checkY(entity) {
         let y;
         if (entity.vel.y > 0) {
-            // mario is going toward BOTTOM
+            // mario is going toward B
             y = entity.pos.y + entity.size.y;
         } else if (entity.vel.y < 0) {
             // mario is going toward TOP
@@ -62,7 +62,7 @@ export default class TileCollider {
         )
 
         matches.forEach(match => {
-            if (match.tile.name !== 'ground') {
+            if (match.tile.type !== 'ground') {
                 return;
             }
 
@@ -81,11 +81,11 @@ export default class TileCollider {
 
     }
 
-    test(entity) {
-        this.checkY(entity);
-        // const match = this.tile.matchPosition(entity.pos.x, entity.pos.y)
-        // if (match) {
-        //     console.log('Matched', match)
-        // }
-    }
+    // test(entity) {
+    //     this.checkY(entity);
+    //     // const match = this.tile.matchPosition(entity.pos.x, entity.pos.y)
+    //     // if (match) {
+    //     //     console.log('Matched', match)
+    //     // }
+    // }
 }
