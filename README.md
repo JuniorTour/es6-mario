@@ -57,8 +57,8 @@ Promise.all([
 2. High-Order Function In Javascript
 
 > The function which:
-> 1. Has function prameter
-> 2. Return value is function
+> 1. Has function parameter.
+> 2. Return-value is a function.
 
 The High-Order Function can be used to simplify code.
 

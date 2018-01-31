@@ -2,6 +2,7 @@ import Level from './Level.js'
 import SpriteSheet from './SpriteSheet.js'
 import {createBackgroundLayer, createSpriteLayer} from './layers.js'
 // import {loadBackgroundSprites} from './sprites.js'
+import {createAnim} from './anim.js'
 
 export function loadImage(url) {
     return new Promise(resolve => {
@@ -49,7 +50,7 @@ function createTiles(level, backgrounds) {
     })
 }
 
-function loadSpriteSheet(name) {
+export function loadSpriteSheet(name) {
     return loadJSON(`/sprites/${name}.json`)
         .then(sheetSpec => Promise.all([
                 sheetSpec,
@@ -61,12 +62,26 @@ function loadSpriteSheet(name) {
                     sheetSpec.tileW,
                     sheetSpec.tileH);
 
-                sheetSpec.tiles.forEach(tileSpec => {
-                    sprites.defineTile(
-                        tileSpec.name,
-                        tileSpec.index[0],
-                        tileSpec.index[1]);
-                })
+                if (sheetSpec.tiles) {
+                    sheetSpec.tiles.forEach(tileSpec => {
+                        sprites.defineTile(
+                            tileSpec.name, ...tileSpec.index);
+                    })
+                }
+
+                if (sheetSpec.frames) {
+                    sheetSpec.frames.forEach(frameSpec => {
+                        sprites.define(frameSpec.name, ...frameSpec.rect);
+                    })
+                }
+
+                if (sheetSpec.animations) {
+                    sheetSpec.animations.forEach(animSpec => {
+                        const animation = createAnim(animSpec.frames, animSpec.frameLen);
+
+                        sprites.defineAnim(animSpec.name, animation);
+                    })
+                }
 
                 return sprites;
         });
@@ -79,16 +94,16 @@ export function  loadLevel(name) {
                 loadSpriteSheet(levelSpec.spriteSheet)
             ]))
         .then(([levelSpec, backgroundSprites]) => {
-            const level = new Level()
+            const level = new Level();
 
-            createTiles(level,levelSpec.background)
+            createTiles(level,levelSpec.background);
 
-            const backgroundLayer = createBackgroundLayer(level, backgroundSprites)
-            level.comp.layers.push(backgroundLayer)
+            const backgroundLayer = createBackgroundLayer(level, backgroundSprites);
+            level.comp.layers.push(backgroundLayer);
 
-            const spriteLayer = createSpriteLayer(level.entities)
-            level.comp.layers.push(spriteLayer)
+            const spriteLayer = createSpriteLayer(level.entities);
+            level.comp.layers.push(spriteLayer);
 
-            return level
+            return level;
         })
 }

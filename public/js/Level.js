@@ -5,11 +5,12 @@ import {Matrix} from './math.js'
 export default class Level {
     constructor() {
         this.gravity = 2000;
-        this.comp = new Compositor()
-        this.entities = new Set()
-        this.tiles = new Matrix()
+        this.comp = new Compositor();
+        this.entities = new Set();
+        this.tiles = new Matrix();
+        this.totalTime = 0;
 
-        this.tileCollider = new TileCollider(this.tiles)
+        this.tileCollider = new TileCollider(this.tiles);
     }
 
     update(deltaTime) {
@@ -26,5 +27,7 @@ export default class Level {
 
             // this.tileCollider.test(entity)
         })
+
+        this.totalTime += deltaTime;
     }
 }

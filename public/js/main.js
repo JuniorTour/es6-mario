@@ -16,16 +16,15 @@ Promise.all([
 ])
     .then(([mario, level]) => {
         const camera = new Camera();
-        window.camera = camera;
 
         mario.pos.set(64, 180);
         // mario.vel.set(200, -600);
 
         level.entities.add(mario);
 
-        level.comp.layers.push(
-            createCollisionLayer(level),
-            createCameraLayer(camera));
+        // level.comp.layers.push(
+        //     createCollisionLayer(level),
+        //     createCameraLayer(camera));
 
         const input = setupKeyboard(mario);
         input.listenTo(window);

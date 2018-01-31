@@ -13,6 +13,13 @@ export function setupKeyboard(entity) {
             entity.jump.cancel()
         }
     })
+    input.addMapping('ArrowUp', keyState => {
+        if (keyState) {
+            entity.jump.start()
+        } else {
+            entity.jump.cancel()
+        }
+    })
 
     input.addMapping('ArrowRight', keyState => {
         entity.go.dir = keyState;

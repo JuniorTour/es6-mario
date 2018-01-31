@@ -92,6 +92,7 @@
       "title": "chance",
       "type": "ground",
       "ranges": [
+        [4, 6],
         [23, 9],
         [28, 9],
         [30, 9],

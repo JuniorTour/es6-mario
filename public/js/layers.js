@@ -21,14 +21,14 @@ export function createBackgroundLayer(level, sprites) {
 
     let startIndex, endIndex;
     function redraw(drawFrom, drawTo) {
-        if (startIndex === drawFrom && endIndex === drawTo) {
-            return;
-        }
+        // if (startIndex === drawFrom && endIndex === drawTo) {
+        //     return;
+        // }
 
         startIndex = drawFrom;
-        endIndex = drawTo
+        endIndex = drawTo;
 
-        console.log('Redraw!');
+        // console.log('Redraw!');
 
         for (let x = startIndex; x <= endIndex; x++) {
             const col = tiles.grid[x];
@@ -36,11 +36,20 @@ export function createBackgroundLayer(level, sprites) {
                 // console.log(x - startIndex);
                 /*TODO Cannot figure out the mean of x - startIndex and -camera.pos.x % 16 OPTIMIZATION in EP 6*/
                 col.forEach((tile, y) => {
-                    sprites.drawTile(
-                        tile.name,
-                        context,
-                        x - startIndex,
-                        y);
+                    if (sprites.animations.has(tile.name)) {
+                        sprites.drawAnim(
+                            tile.name,
+                            context,
+                            x - startIndex,
+                            y,
+                            level.totalTime);
+                    } else {
+                        sprites.drawTile(
+                            tile.name,
+                            context,
+                            x - startIndex,
+                            y);
+                    }
                 })
             }
         }
