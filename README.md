@@ -34,7 +34,9 @@ By `split the implementation and declaration with module syntax`, `build a Class
 
 
 ## Topic Summary Notes
-0. Es6 Module
+0. Es6 Syntax
+
+- <1> Module
 
 ``` javascript
 
@@ -45,7 +47,83 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 ```
 
-1. Promise
+- <2> Super Class
+
+``` javascript
+import {Trait} from '../Entity.js'
+
+export default class Go extends Trait {
+    constructor() {
+        /*super keyword inner class means the father class's constructor of this class.
+        Here the father class is the Trait class.*/
+        super('go');
+
+        // ...
+    }
+}
+```
+
+
+- <3> Symbol
+
+``` javascript
+export const Sides = {
+    BOTTOM: Symbol('bottom'),
+    TOP: Symbol('top')
+};
+```
+
+Symbol has some unique traits.
+
+- It is the seventh basic value type of Javascript, the other is: undefined, null, Boolean, String, Number, Object.
+
+- It represent a UNIQUE symbol:
+``` javascript
+// 没有参数的情况
+let s1 = Symbol();
+let s2 = Symbol();
+
+s1 === s2 // false
+
+// 有参数的情况
+let s1 = Symbol('foo');
+let s2 = Symbol('foo');
+
+s1 === s2 // false
+```
+
+- As property name, this property can only be visited or declared by `[]` syntax
+``` javascript
+let mySymbol = Symbol();
+
+// 第一种写法
+let a = {};
+a[mySymbol] = 'Hello!';
+
+// 第二种写法
+let a = {
+  [mySymbol]: 'Hello!'
+};
+
+// 第三种写法
+let a = {};
+Object.defineProperty(a, mySymbol, { value: 'Hello!' });
+
+// 以上写法都得到同样结果
+a[mySymbol] // "Hello!"
+```
+
+Can not use the `.` to visit the prop:
+```
+const mySymbol = Symbol();
+const a = {};
+
+a.mySymbol = 'Hello!';  // Here mySymbol only means a string, not a Symbol
+a[mySymbol] // undefined
+a['mySymbol'] // "Hello!"
+```
+
+- <4> Promise
 
 ``` javascript
 Promise.all([
@@ -54,7 +132,7 @@ Promise.all([
 ]).then(([resolveA, resolveB]) => {//...})
 ```
 
-2. High-Order Function In Javascript
+1. High-Order Function In Javascript
 
 > The function which:
 > 1. Has function parameter.
@@ -120,7 +198,9 @@ random; // "ltvisfjr" (different result each time)
 
 https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 
-4. Game Theory: Timer and Main Loop(Ep3)
+4. Game Theory:
+
+- <1> Timer and Main Loop(Ep3)
 
 目前的帧数（更新画面的频率）由requestAnimationFrame决定，
 但当计算机的性能不足，帧数较低时，游戏内的速度（FPS-frame per second）会变的很慢；
@@ -176,6 +256,64 @@ if (积累的时间 > 1/60) {
 }
 ```
 
+- <2> Physical Effect - Inertia Force and Friction Force in Game(Ep8)
+
+In our game, mario has Inertia Force and Friction Force, when he stop to run, he have to walk further. And when he is running, his velocity will be slow down partly by the Friction Force, the implementation is like below:
+
+``` javascript
+// ./js/traits/go.js
+
+class GO {
+    constructor() {
+
+        this.dir = 0;
+        /*1. We declare the acceleration, deceleration, dragFactor(friction factor) for preparation.
+        Besides, each entity has an vel (velocity) property which indicates its speed.*/
+        this.acceleration = 400;
+        this.deceleration = 300;
+        this.dragFactor = 1/5000;
+
+        this.distance = 0;
+    }
+
+    update(entity, deltaTime) {
+        const absX = Math.abs(entity.vel.x);
+
+        if (this.dir !== 0) {
+            /*2. When an entity start to move, it will speed up GRADUALLY (+=) due to the inertia force in the static status.*/
+            entity.vel.x += this.acceleration * deltaTime * this.dir;
+            this.heading = this.dir;
+        } else if (entity.vel.x !== 0) {
+            const decel = Math.min(absX, this.deceleration * deltaTime);
+            entity.vel.x += entity.vel.x > 0 ? -decel : decel;
+        } else {
+            this.distance = 0;
+        }
+
+        /*3. Every time we update a frame, we caculate the drag, which is friction force of an entity, and SUBTRACT(-=) the drag from entity's velocity, slow down the entity, just like the real world does.*/
+        const drag = this.dragFactor * entity.vel.x * absX;
+        entity.vel.x -= drag;
+
+        /*4. At last we record the distance we have went through by timing the velocity and time. Just like the real world too.*/
+        this.distance += absX * deltaTime;
+    }
+}
+
+// ./js/entities.js
+
+function frameRoute(mario) {
+    return runAnim(mario.go.distance);
+}
+
+```
+
+- <3> Grace Period (宽限期) - EP8
+
+Without the Grace Period, the mario's jump is hard to control.
+ When we press the jump key many times continuously, we can only get one time of jump, and another jump have to be trigger when we landed. It makes the game tricky.
+
+ With the Grace Period (implementation is in ./js/traits/jump.js), during a limit time period, we allow mario to jump another time followed by his former jump. Then the game feels more silky~~~
+
 5. ES6 - Data Structure
 
 > Map
@@ -190,5 +328,7 @@ input.listenTo(window);
 
         ['mousedown', 'mousemove'].forEach(eventName => {
 ```
+
+7. Magic String / Number
 
 ## File Structure

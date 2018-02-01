@@ -16,10 +16,19 @@ export function createMario() {
             mario.addTrait(new Jump());
             // mario.addTrait(new Velocity());
 
-            const runAnim = createAnim(['run-1', 'run-2', 'run-3'], 10);
+            const runAnim = createAnim(['run-1', 'run-2', 'run-3'], 9);
 
             function frameRoute(mario) {
-                if (mario.go.dir !== 0) {
+                if (mario.jump.falling) {
+                    return 'jump';
+                }
+
+                if (mario.go.distance > 0) {
+                    if ((mario.vel.x > 0 && mario.go.dir < 0) ||
+                        (mario.vel.x < 0 && mario.go.dir > 0)) {
+                        return 'break';
+                    }
+
                     return runAnim(mario.go.distance);
                 }
 
@@ -28,7 +37,7 @@ export function createMario() {
 
             mario.draw = function drawMario(context) {
                 sprite.draw(frameRoute(this), context, 0, 0, this.go.heading < 0);
-            }
+            };
 
             return mario;
         })
