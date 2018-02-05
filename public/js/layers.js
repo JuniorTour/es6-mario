@@ -1,34 +1,31 @@
-function drawBackground(background, context, sprites) {
-    background.ranges.forEach(([xStart, xLen, yStart, yLen]) => {
-        const xEnd = xStart + xLen;
-        const yEnd = yStart + yLen;
-        for (let x = xStart; x < xEnd; x++) {
-            for (let y = yStart; y < yEnd; y++) {
-                sprites.drawTile(background.title, context, x, y);
-            }
-        }
-    })
-}
-export function createBackgroundLayer(level, sprites) {
-    const tiles = level.tiles;
-    const resolver = level.tileCollider.tile;
+import TileResolver from './TileResolver.js'
 
-    const buffer = document.createElement('canvas')
+// function drawBackground(background, context, sprites) {
+//     background.ranges.forEach(([xStart, xLen, yStart, yLen]) => {
+//         const xEnd = xStart + xLen;
+//         const yEnd = yStart + yLen;
+//         for (let x = xStart; x < xEnd; x++) {
+//             for (let y = yStart; y < yEnd; y++) {
+//                 sprites.drawTile(background.title, context, x, y);
+//             }
+//         }
+//     })
+// }
+export function createBackgroundLayer(level, tiles, sprites) {
+    const resolver = new TileResolver(tiles);
+
+    const buffer = document.createElement('canvas');
     buffer.width = 256 + 16;    // 16 + 1 column
     buffer.height = 240;
 
     const context = buffer.getContext('2d');
 
-    let startIndex, endIndex;
-    function redraw(drawFrom, drawTo) {
+    function redraw(startIndex, endIndex) {
         // if (startIndex === drawFrom && endIndex === drawTo) {
         //     return;
         // }
 
-        startIndex = drawFrom;
-        endIndex = drawTo;
-
-        // console.log('Redraw!');
+        context.clearRect(0,0,buffer.width,buffer.height);
 
         for (let x = startIndex; x <= endIndex; x++) {
             const col = tiles.grid[x];
