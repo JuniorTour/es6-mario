@@ -1,16 +1,5 @@
 import TileResolver from './TileResolver.js'
 
-// function drawBackground(background, context, sprites) {
-//     background.ranges.forEach(([xStart, xLen, yStart, yLen]) => {
-//         const xEnd = xStart + xLen;
-//         const yEnd = yStart + yLen;
-//         for (let x = xStart; x < xEnd; x++) {
-//             for (let y = yStart; y < yEnd; y++) {
-//                 sprites.drawTile(background.title, context, x, y);
-//             }
-//         }
-//     })
-// }
 export function createBackgroundLayer(level, tiles, sprites) {
     const resolver = new TileResolver(tiles);
 
@@ -21,9 +10,6 @@ export function createBackgroundLayer(level, tiles, sprites) {
     const context = buffer.getContext('2d');
 
     function redraw(startIndex, endIndex) {
-        // if (startIndex === drawFrom && endIndex === drawTo) {
-        //     return;
-        // }
 
         context.clearRect(0,0,buffer.width,buffer.height);
 
@@ -65,10 +51,6 @@ export function createBackgroundLayer(level, tiles, sprites) {
             -camera.pos.y);
     }
 
-    // level.titles.forEach((tile, x, y) => {
-    //     sprites.drawTile(tile.name, context, x, y);
-    // })
-    //
     // // High-Order Function
     // return function drawBackgroundLayer(context, camera) {
     //     context.drawImage(buffer, -camera.pos.x, -camera.pos.y);
@@ -128,7 +110,7 @@ export function createCollisionLayer(level) {
             context.beginPath();
             context.rect(
                 entity.pos.x - camera.pos.x,
-                entity.pos.y - camera.pos.y,
+                entity.pos.y + entity.offset.y - camera.pos.y,
                 entity.size.x,
                 entity.size.y);
             context.stroke();

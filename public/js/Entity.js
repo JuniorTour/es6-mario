@@ -1,6 +1,9 @@
 import {Vec2} from './math.js'
+import BoundingBox from './BoundingBox.js'
 
 export const Sides = {
+    LEFT: Symbol('left'),
+    RIGHT: Symbol('right'),
     BOTTOM: Symbol('bottom'),
     TOP: Symbol('top')
 };
@@ -24,6 +27,9 @@ export default class Entity {
         this.pos = new Vec2(0,0);
         this.vel = new Vec2(0,0);
         this.size = new Vec2(0,0);
+        this.offset = new Vec2(0,0);
+        this.bounds = new BoundingBox(this.pos, this.size, this.offset);
+        this.lifeTime = 0;
 
         this.traits = [];
     }
@@ -42,6 +48,8 @@ export default class Entity {
     update(deltaTime) {
         this.traits.forEach(trait => {
             trait.update(this, deltaTime);
-        })
+        });
+
+        this.lifeTime +=deltaTime;
     }
 }

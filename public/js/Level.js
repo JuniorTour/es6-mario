@@ -17,6 +17,7 @@ export default class Level {
 
     update(deltaTime) {
         this.entities.forEach(entity => {
+            // debugger
             entity.update(deltaTime);
 
             entity.vel.y += this.gravity * deltaTime;

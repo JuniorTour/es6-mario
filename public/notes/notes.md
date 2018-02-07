@@ -106,6 +106,15 @@ Promise.all([
 ]).then(([resolveA, resolveB]) => {//...})
 ```
 
+``` javascript
+    // entities.js
+    return Promise.all([
+        loadMario().then(saveAs('mario')),
+        loadGoomba().then(saveAs('goomba')),
+        loadKoopa().then(saveAs('koopa')),
+    ])
+        .then(() => entitiesFactory)
+```
 
 - <5> Generator, yield and Iterator
 
