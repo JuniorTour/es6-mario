@@ -136,6 +136,31 @@ function* expandSpan(xStart, xLen, yStart, yLen) {
 }
 ```
 
+- <6> Async / Await
+
+``` javascript
+
+// Without Async / Await:
+const targetValue;
+returnPromise()
+    .then(asyncValue => {
+        targetValue = asyncValue;
+    })
+
+// With it :
+ const targetValue = await returnPromise();
+
+```
+
+
+
+
+
+
+
+
+
+
 1. High-Order Function In Javascript
 
 > The function which:
