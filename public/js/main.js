@@ -1,14 +1,21 @@
 import Timer from './Timer.js';
 import Camera from './Camera.js';
-// import Entity from './Entity.js'
-// import PlayerController from './traits/PlayerController.js'
+import Entity from './Entity.js';
+import PlayerController from './traits/PlayerController.js';
 import {createLevelLoader} from './loaders/level.js';
 import {loadEntities} from './entities.js';
 import {createCollisionLayer, createCameraLayer} from './layers.js';
 import {setupKeyboard} from './input.js';
-// import {setupMouseControl} from './debug.js'
+// import {setupMouseControl} from './debug.js';
 
+function createPlayerEnv(playerEntity) {
+    const playerEnv = new Entity();
+    const playerControl = new PlayerController();
+    playerControl.setPlayer(playerEntity);
+    playerEnv.addTrait(playerControl);
 
+    return playerEnv;
+}
 
 async function main(canvas) {
     const context = canvas.getContext('2d');
@@ -22,6 +29,9 @@ async function main(canvas) {
     const mario = entityFactory.mario();
     mario.pos.set(64, 100);
     level.entities.add(mario);
+
+    const playerEnv = createPlayerEnv(mario);
+    level.entities.add(playerEnv);
 
     const input = setupKeyboard(mario);
     input.listenTo(window);

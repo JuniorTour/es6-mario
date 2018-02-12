@@ -4,7 +4,7 @@ import Go from '../traits/Go.js'
 import Jump from '../traits/Jump.js'
 import Stomer from '../traits/Stomer.js'
 import Killable from '../traits/Killable.js'
-import PlayerController from '../traits/PlayerController.js'
+// import PlayerController from '../traits/PlayerController.js'
 import {loadSpriteSheet} from '../loader.js';
 
 /*Name Convention:
@@ -47,10 +47,10 @@ function createMarioFactory(sprite) {
         mario.addTrait(new Jump());
         mario.addTrait(new Stomer());
         mario.addTrait(new Killable());
-        mario.addTrait(new PlayerController());
+        // mario.addTrait(new PlayerController());
 
         mario.killable.removeAfter = 0;
-        mario.playerController.setPlayer(mario);
+        // mario.playerController.setPlayer(mario);
 
         mario.draw = drawMario;
 
