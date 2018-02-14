@@ -4,6 +4,9 @@ export default class Stomer extends Trait {
     constructor() {
         super('stomer');
         this.bounceSpeed = 400;
+
+        this.onStomp = function () {
+        }
     }
 
     bounce(us, them) {
@@ -21,6 +24,7 @@ export default class Stomer extends Trait {
 
         if ( us.vel.y > them.vel.y) {
             this.bounce(us, them);
+            this.onStomp(us, them);
         }
     }
 }
