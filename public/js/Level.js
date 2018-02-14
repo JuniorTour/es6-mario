@@ -19,27 +19,14 @@ export default class Level {
 
     update(deltaTime) {
         this.entities.forEach(entity => {
-            // debugger
             entity.update(deltaTime, this);
-
-            entity.pos.x += entity.vel.x * deltaTime;
-            if (entity.canCollides) {
-                this.tileCollider.checkX(entity);
-            }
-
-            entity.pos.y += entity.vel.y * deltaTime;
-            if (entity.canCollides) {
-                this.tileCollider.checkY(entity);
-            }
-
-            entity.vel.y += this.gravity * deltaTime;
         });
 
 
         this.entities.forEach(entity => {
-            if (entity.canCollides) {
-                this.entityCollider.check(entity);
-            }
+            entity.finalize();
+
+            this.entityCollider.check(entity);
         });
 
         this.totalTime += deltaTime;

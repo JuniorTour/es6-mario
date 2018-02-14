@@ -2,6 +2,8 @@ import Entity, {Sides, Trait} from '../Entity.js'
 import {loadSpriteSheet} from '../loader.js';
 import PendulumWalk from '../traits/PendulumMove.js';
 import Killable from '../traits/Killable.js';
+import Solid from '../traits/Solid.js'
+import Physics from '../traits/Physics.js'
 
 export function loadGoomba() {
     return loadSpriteSheet('goomba')
@@ -22,7 +24,6 @@ class Behavior extends Trait {
         if (them.stomer) {
             if (them.vel.y > us.vel.y) {
                 us.killable.kill();
-                // them.stomer.bounce();
                 us.pendulumMove.speed = 0;
             } else {
                 them.killable.kill();
@@ -50,6 +51,8 @@ function createGoombaFactory(sprite) {
         const goomba = new Entity();
         goomba.size.set(16, 16);
 
+        goomba.addTrait(new Physics());
+        goomba.addTrait(new Solid());
         goomba.addTrait(new PendulumWalk());
         goomba.addTrait(new Behavior());
         goomba.addTrait(new Killable());
