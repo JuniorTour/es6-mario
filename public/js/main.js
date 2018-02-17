@@ -44,12 +44,11 @@ async function main(canvas) {
 
 
     level.comp.layers.push(createDashboardLayer(font, playerEnv));
+
     /*Debug Tools : */
-
-    level.comp.layers.push(
-        createCollisionLayer(level),
-        createCameraLayer(camera));
-
+    // level.comp.layers.push(
+    //     createCollisionLayer(level),
+    //     createCameraLayer(camera));
     // setupMouseControl(canvas, mario, camera);
 
 
