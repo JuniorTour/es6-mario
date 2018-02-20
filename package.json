@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "serve ./public",
+    "start-prod": "serve ./public/dist",
+    "build": "webpack --config ./public/build/webpack.config.js",
     "test": ""
   },
   "keywords": [
@@ -17,5 +19,9 @@
   "license": "MIT",
   "dependencies": {
     "serve": "^6.4.8"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.11.0"
   }
 }
