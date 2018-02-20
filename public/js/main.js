@@ -5,10 +5,10 @@ import PlayerController from './traits/PlayerController.js';
 import {createLevelLoader} from './loaders/level.js';
 import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
-import {createCollisionLayer} from './layers/collision.js'
-import {createDashboardLayer} from './layers/dashboard.js'
-import {createCameraLayer} from './layers/camera.js';
+import {createDashboardLayer} from './layers/dashboard.js';
 import {setupKeyboard} from './input.js';
+// import {createCollisionLayer} from './layers/collision.js'
+// import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
 function createPlayerEnv(playerEntity) {

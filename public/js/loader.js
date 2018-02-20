@@ -1,6 +1,4 @@
 import SpriteSheet from './SpriteSheet.js'
-// import {loadBackgroundSprites} from './sprites.js'
-
 import {createAnim} from './anim.js'
 
 export function loadImage(url) {

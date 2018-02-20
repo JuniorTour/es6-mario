@@ -12,6 +12,7 @@ export default class SpriteSheet {
     }
 
     define(name, x, y, width, height) {
+        // define a sprite in the image with name
         // 明确定义一块位于sprite sheet中x,y位置width, height的sprite
         const buffers = [false, true].map(flip => {
             const buffer = document.createElement('canvas');
@@ -44,7 +45,6 @@ export default class SpriteSheet {
     }
 
     defineTile(name, x, y) {
-        // 粗略定义一块位于sprite sheet中x,y位置宽度固定的sprite
         this.define(name, x * this.width, y * this.height, this.width, this.height);
     }
 
