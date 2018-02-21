@@ -21,9 +21,12 @@ cd es6-mario
 
 npm install
 
-npm run start
+npm run dev     // Start Development at http://localhost:8080
 
-// visit http://localhost:5000/
+npm run build   // Bundle project with Webpack to ./public/dist
+
+npm run prod    // Serve in Production Env at http://localhost:666
+
 ```
 
 

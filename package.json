@@ -4,10 +4,9 @@
   "description": "A web game made by ES6 syntax and HTML5.Learn by https://www.youtube.com/watch?v=g-FpDQ8Eqw8&index=1&list=PLS8HfBXv9ZWWe8zXrViYbIM2Hhylx8DZx .",
   "main": "index.js",
   "scripts": {
-    "start": "serve ./public",
-    "start-prod": "serve ./public/dist",
-    "build": "webpack --config ./public/build/webpack.config.js",
-    "test": ""
+    "prod": "node ./public/build/prod-server.js",
+    "dev": "webpack-dev-server --open --config ./public/build/webpack.config.js",
+    "build": "webpack --config ./public/build/webpack.config.js"
   },
   "keywords": [
     "es6",
@@ -17,13 +16,14 @@
   ],
   "author": "juniortour",
   "license": "MIT",
-  "dependencies": {
-    "serve": "^6.4.8"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "^4.4.1",
-    "file-loader": "^1.1.8",
+    "express": "^4.16.2",
     "html-webpack-plugin": "^2.30.1",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.5",
+    "webpack-dev-server": "^2.11.1"
   }
 }

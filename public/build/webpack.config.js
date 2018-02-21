@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 /*
@@ -9,27 +10,17 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 *
 * 1. Copy assets file --- CopyWebpackPlugin
 * 2. Compress/Optimise assets file --- ImageminPlugin
-* 3. Dev Server
+* 3. Dev Server --- Webpack Dev Server
 * 4. Babel compile
+* 5. Gzip and other Optimise
 * */
 
 
 module.exports = {
     entry: './public/js/main.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, '../dist')
-    },
-    module: {
-       rules: [
-           {
-                test: /\.(png|svg|jpg|gif)$/,
-                 use: [
-                   'file-loader'
-                 ]
-           }
-       ]
-    },
+    // module: {
+    //    rules: []
+    // },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'My template',
@@ -56,5 +47,16 @@ module.exports = {
             }
         ]),
         new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
-    ]
+    ],
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase:path.join(__dirname, "public"),
+        compress: true,
+        port: 8080
+    },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: '/'
+    }
 };
