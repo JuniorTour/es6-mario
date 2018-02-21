@@ -11,6 +11,7 @@ import {setupKeyboard} from './input.js';
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
+
 function createPlayerEnv(playerEntity) {
     const playerEnv = new Entity();
     const playerControl = new PlayerController();
@@ -69,4 +70,3 @@ async function main(canvas) {
 
 const canvas = document.getElementById('screen');
 main(canvas);
-

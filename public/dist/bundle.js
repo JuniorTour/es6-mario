@@ -597,6 +597,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
+
 function createPlayerEnv(playerEntity) {
     const playerEnv = new __WEBPACK_IMPORTED_MODULE_2__Entity_js__["c" /* default */]();
     const playerControl = new __WEBPACK_IMPORTED_MODULE_3__traits_PlayerController_js__["a" /* default */]();
@@ -655,8 +656,6 @@ async function main(canvas) {
 
 const canvas = document.getElementById('screen');
 main(canvas);
-
-
 
 /***/ }),
 /* 10 */
