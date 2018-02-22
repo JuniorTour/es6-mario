@@ -1,8 +1,13 @@
+import {addPadStartPolyfill} from '../polyfills/addPadStart.js';
+
 export function createDashboardLayer(font, playerEnv) {
     const LINE1 = font.size;
     const LINE2 = font.size*2;
 
     const coins = 99;
+
+    addPadStartPolyfill();
+
     return function drawDashboard(context) {
         const {time,score} = playerEnv.playerController;
         font.print('MARIO', context,16, LINE1);

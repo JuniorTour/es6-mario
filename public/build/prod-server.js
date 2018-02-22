@@ -1,31 +1,31 @@
 const path = require('path');
+const serveStatic = require('serve-static');
 
 const express = require('express');
 const app = express();
-// const webpack = require('webpack');
-// const webpackDevMiddleware = require('webpack-dev-middleware');
 
-// const config = require('./webpack.config.js');
-// const compiler = webpack(config);
+// function serverStaticFile(req, res, next) {
+//     console.log(req.originalUrl);
+//     console.log(fs.existsSync(path.join(__dirname, '../dist' + req.originalUrl)));
+//     if (fs.existsSync(path.join(__dirname, '../dist' + req.originalUrl))) {
+//         res.sendFile(path.join(__dirname, '../dist' + req.originalUrl))
+//     } else {
+//         res.send()
+//     }
+//     // if (req.originalUrl === '/') {
+//     //     res.sendFile(path.join(__dirname, '../dist/index.html'));
+//     // } else {
+//     // }
+// }
+//
+// app.use((req, res, next) => {
+//     serverStaticFile(req, res, next);
+// });
 
-// Tell express to use the webpack-dev-middleware and use the webpack.config.js
-// configuration file as a base.
-// app.use(webpackDevMiddleware(compiler, {
-//     publicPath: config.output.publicPath
-// }));
+// app.use(serveStatic(__dirname + "/dist"));
 
-function serverStaticFile(req, res, next) {
-    // console.log(req.originalUrl );
-    if (req.originalUrl === '/') {
-        res.sendFile(path.join(__dirname, '../dist/index.html'));
-    } else {
-        res.sendFile(path.join(__dirname, '../dist' + req.originalUrl))
-    }
-}
-
-app.use((req, res, next) => {
-    serverStaticFile(req, res, next);
-});
+// Simple serve static package: https://www.npmjs.com/package/serve-static
+app.use(serveStatic(path.join(__dirname, '../dist'), {'index': ['index.html', 'index.htm']}));
 
 // Serve the files on port 3000.
 app.listen(666, function () {

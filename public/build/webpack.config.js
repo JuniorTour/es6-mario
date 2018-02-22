@@ -13,14 +13,38 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 * 3. Dev Server --- Webpack Dev Server
 * 4. Babel compile
 * 5. Gzip and other Optimise
+*   Before bundle: bundle.js is 71kb,
+*   After bundle without compress and uglify: bundle.js is 138kb,
+*   After bundle with Balbel transform runtime: bundle.js is 542kb,
+*
 * */
+
+/*Compatibility
+* 0. Before compiled by Babel, chrome-61+ (Mainly because of the Async Function).
+* 1. After compiled by Babel,
+*       firefox-47 worked;
+*       Edge-14 worked but cannot handle keyboard input;
+*       IE11 still not work, with Error: Unhandled promise rejection ReferenceError: “fetch”未定义*/
 
 
 module.exports = {
     entry: './public/js/main.js',
-    // module: {
-    //    rules: []
-    // },
+    module: {
+       rules: [
+           {
+               test: /\.js$/,
+               exclude: /(node_modules|bower_components)/,
+               use: {
+                   loader: 'babel-loader',
+                   options: {
+                       presets: ['babel-preset-env'],
+                       /*Without babel-preset-env async function wont be compiled.*/
+                       plugins: ['babel-plugin-transform-runtime']
+                   }
+               }
+           }
+       ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'My template',
