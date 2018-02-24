@@ -28,6 +28,7 @@ const app = express();
 app.use(serveStatic(path.join(__dirname, '../dist'), {'index': ['index.html', 'index.htm']}));
 
 // Serve the files on port 3000.
-app.listen(666, function () {
-    console.log('Example app listening on port 3000!\n');
+const port = 666;
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!\n`);
 });

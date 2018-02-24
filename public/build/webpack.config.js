@@ -36,11 +36,14 @@ module.exports = {
                exclude: /(node_modules|bower_components)/,
                use: {
                    loader: 'babel-loader',
-                   options: {
-                       presets: ['babel-preset-env'],
-                       /*Without babel-preset-env async function wont be compiled.*/
-                       plugins: ['babel-plugin-transform-runtime']
-                   }
+                   // When specific use babel loader,
+                   // Webpack will automatically find the .babelrc file in the root path
+                   // options: {
+                   //     presets: ['babel-preset-env'],
+                   //  Without babel-preset-env async function wont be compiled.
+                   // See : https://babeljs.io/docs/usage/caveats/#polyfills
+                   //     plugins: ['babel-plugin-transform-runtime']
+                   // }
                }
            }
        ]

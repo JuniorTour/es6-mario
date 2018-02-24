@@ -1,4 +1,4 @@
-# 🎮ES6-Mario
+# 🎮 ES6-Mario
 
 A web game made by ES6 syntax and HTML5.
 
@@ -25,7 +25,7 @@ npm run dev     // Start Development at http://localhost:8080
 
 npm run build   // Bundle project with Webpack to ./public/dist
 
-npm run prod    // Serve in Production Env at http://localhost:666
+npm run prod    // Serve the bundled project in Production Env at http://localhost:666
 
 ```
 
@@ -170,6 +170,6 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 If you have any idea about this project, feel free to talk with me in any way.
 
-![:octocat:](https://assets-cdn.github.com/images/icons/emoji/octocat.png)My GitHub: [@JuniorTour](https://github.com/JuniorTour).
+My GitHub: [@JuniorTour](https://github.com/JuniorTour).
 
-✉️My Email: [juniortour@qq.com](mailto:juniortour@qq.com).
+My Email: [juniortour@qq.com](mailto:juniortour@qq.com).
