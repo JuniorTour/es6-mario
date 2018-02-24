@@ -1,3 +1,6 @@
+import '../css/main.css';
+/*TODO CSS in Js, I don't like it.*/
+
 import Timer from './Timer.js';
 import Camera from './Camera.js';
 import Entity from './Entity.js';

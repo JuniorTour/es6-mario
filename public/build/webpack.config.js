@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 /*
 * TODO-List
 *
@@ -15,23 +16,36 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 * 5. Gzip and other Optimise
 *   Before bundle: bundle.js is 71kb,
 *   After bundle without compress and uglify: bundle.js is 138kb,
-*   After bundle with Balbel transform runtime: bundle.js is 542kb,
+*   After bundle with Babel transform runtime: bundle.js is 542kb,
+*
+*   https://github.com/webpack-contrib/compression-webpack-plugin/issues/63
 *
 * */
 
 /*Compatibility
-* 0. Before compiled by Babel, chrome-61+ (Mainly because of the Async Function).
+*
+* 0. Before compiled by Babel, Only chrome-61+ (Mainly because of the Async Function).
 * 1. After compiled by Babel,
-*       firefox-47 worked;
+*       firefox-47 worked perfect;
 *       Edge-14 worked but cannot handle keyboard input;
-*       IE11 still not work, with Error: Unhandled promise rejection ReferenceError: “fetch”未定义*/
+*       IE11 still not work, with Error: Unhandled promise rejection ReferenceError: “fetch”未定义. Abandoned  IE.
+*
+*       Mobile:
+*           Android:
+*               7.0 - Samsung s7, working perfect and smooth.
+ *              4.0 - Samsung ,
+*           IOS:
+*               9.3.2 - iPhone se, no screen, mainly because the fetch API.
+*               Solved by add whatwg-fetch polyfill like below in entry property.
+*               Worked but FPS is low.
+*               11. - iPhone 8, */
 
 
 module.exports = {
-    entry: './public/js/main.js',
+    entry: ['whatwg-fetch', './public/js/main.js'],
     module: {
        rules: [
-           {
+            {
                test: /\.js$/,
                exclude: /(node_modules|bower_components)/,
                use: {
@@ -45,7 +59,22 @@ module.exports = {
                    //     plugins: ['babel-plugin-transform-runtime']
                    // }
                }
-           }
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true,
+                                sourceMap: true
+                            }
+                        }
+                    ]
+                })
+            }
        ]
     },
     plugins: [
@@ -73,7 +102,8 @@ module.exports = {
                 to: 'levels'
             }
         ]),
-        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
+        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+        new ExtractTextPlugin("styles.css"),
     ],
     devtool: 'inline-source-map',
     devServer: {

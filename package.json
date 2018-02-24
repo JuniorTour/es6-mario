@@ -17,7 +17,8 @@
   "author": "juniortour",
   "license": "MIT",
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -26,8 +27,13 @@
     "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "^4.4.1",
+    "css-loader": "^0.28.10",
     "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
+    "imagemin-webpack-plugin": "2.0.0",
+    "promise-polyfill": "7.1.0",
+    "style-loader": "^0.20.2",
     "webpack": "^3.11.0",
     "webpack-dev-middleware": "^2.0.5",
     "webpack-dev-server": "^2.11.1"

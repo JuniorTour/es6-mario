@@ -3,8 +3,28 @@
 
 0. Regularly Clean up your code
 
-By `split the implementation and declaration with module syntax`, `build a Class`
+By `split the implementation and declaration with module syntax`, `build a Class`.
 
+
+1. `rm -rf folders` in Windows
+
+`rd /s /q node_modules` or `rmdir /s /q node_modules`.
+
+- /S Removes all directories and files in the specified directory in addition to the directory itself. Used to remove a directory tree.
+
+- /Q Quiet mode, do not ask if ok to remove a directory tree with /S
+
+2. npm
+
+> `npm i something --save --save-exact`
+
+[https://docs.npmjs.com/cli/install](https://docs.npmjs.com/cli/install)
+
+The `--save-exact` param means save the EXACT version of package, which does't have the `^` before ites version.
+
+eg: `"something-exact": "1.23"` and `"something": "^1.23"
+
+> `--save` can be simplified to '-S', `--save-dev` can be simplified to '-D'
 
 ## Topic Summary Notes
 0. Es6 Syntax
