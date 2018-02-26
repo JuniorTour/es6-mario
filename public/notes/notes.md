@@ -251,6 +251,8 @@ https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 
 - <1> Timer and Main Loop(Ep3)
 
+https://www.scirra.com/tutorials/67/delta-time-and-framerate-independence
+
 目前的帧数（更新画面的频率）由requestAnimationFrame决定，
 但当计算机的性能不足，帧数较低时，游戏内的速度（FPS-frame per second）会变的很慢；
 相反，帧数太高，游戏的速度又会太快。

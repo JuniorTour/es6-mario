@@ -17,7 +17,7 @@ export default class KeyboardState {
         const {code} = event;
 
         if (!this.keyMap.has(code)) {
-            return
+            return;
         }
 
         event.preventDefault();

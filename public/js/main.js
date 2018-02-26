@@ -1,5 +1,6 @@
 import '../css/main.css';
-/*TODO CSS in Js, I don't like it.*/
+import '../css/controller.css';
+/*TODO: CSS import in Js, I don't like it.*/
 
 import Timer from './Timer.js';
 import Camera from './Camera.js';
@@ -9,7 +10,7 @@ import {createLevelLoader} from './loaders/level.js';
 import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
 import {createDashboardLayer} from './layers/dashboard.js';
-import {setupKeyboard} from './input.js';
+import {setupKeyboard} from './input/input.js';
 // import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';

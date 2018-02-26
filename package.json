@@ -4,7 +4,7 @@
   "description": "A web game made by ES6 syntax and HTML5.Learn by https://www.youtube.com/watch?v=g-FpDQ8Eqw8&index=1&list=PLS8HfBXv9ZWWe8zXrViYbIM2Hhylx8DZx .",
   "main": "index.js",
   "scripts": {
-    "prod": "node ./public/build/prod-server.js",
+    "prod": "npm run build & node ./public/build/prod-server.js",
     "dev": "webpack-dev-server --open --config ./public/build/webpack.config.js",
     "build": "webpack --config ./public/build/webpack.config.js"
   },
@@ -30,6 +30,7 @@
     "css-loader": "^0.28.10",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.9",
     "html-webpack-plugin": "^2.30.1",
     "imagemin-webpack-plugin": "2.0.0",
     "promise-polyfill": "7.1.0",

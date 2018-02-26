@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable = no">
     <title>ES6-mario</title>
     <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.png" />
-    <!--TODO CSS in Js, I don't like it.-->
+    <!--TODO: CSS import in Js, I don't like it.-->
     <!--<link rel="stylesheet" href="./css/main.css">-->
     <!--TODO Dev Server, which auto inject bundle.js-->
     <!--<script type="module" src="./js/main.js"></script>-->
 </head>
 <body>
     <canvas id="screen" width="256" height="240"></canvas>
+
+    <div class="controller-wrapper controller-wrapper-left">
+        <div id="controller-left" class="controller controller-arrow controller-arrow-left"></div>
+        <div id="controller-right" class="controller controller-arrow controller-arrow-right"></div>
+    </div>
+    <div class="controller-wrapper controller-wrapper-right ">
+        <div id="controller-jump" class="controller controller-circle controller-circle-large"></div>
+    </div>
 </body>
 </html>

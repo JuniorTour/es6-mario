@@ -1,0 +1,84 @@
+.controller-wrapper {
+    display: none;
+    position: fixed;
+}
+
+.controller-wrapper-right {
+    bottom: 10%;
+    right: 10%;
+}
+
+.controller-wrapper-left {
+    bottom: 25%;
+    left: 10%;
+}
+
+.controller-wrapper .controller {
+    background-color: rgba(0,0,0,.5);
+    color: #000;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.controller-wrapper .controller:active {
+    background-color: #eee;
+}
+
+.controller-arrow {
+    width: 80px;
+    height: 20px;
+    border-radius: 6px;
+    padding: 14px 0;
+    display: inline-block;
+    background-position: -8px -248%;
+    background-size: 120% 150%;
+}
+
+.controller-arrow-left {
+    background-image: url("../img/left-arrow.png");
+    margin-right: 10px;
+}
+.controller-arrow-right {
+    background-image: url("../img/right-arrow.png");
+}
+
+#controller-jump {
+    background-image: url("../img/top-arrow.png");
+}
+
+.controller-wrapper .controller-circle {
+    border-radius: 50%;
+}
+
+.controller-wrapper .controller-circle-large {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+}
+
+@media (max-width: 1024px) {
+    .controller-wrapper {
+        display: block;
+    }
+}
+
+@media (max-width: 320px) {
+    .controller-wrapper-right {
+        bottom: 8%;
+        right: 5%;
+    }
+
+    .controller-wrapper-left {
+        bottom: 25%;
+        left: 5%;
+    }
+}

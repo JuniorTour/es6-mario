@@ -26,7 +26,7 @@ body {
     margin:auto;
 }
 
-@media (max-width: 535px) and (min-width: 256px) {
+@media (max-width: 1024px) and (min-width: 256px) {
     #screen {
         width: 100%;
         height:auto;

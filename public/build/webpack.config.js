@@ -38,7 +38,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 *               9.3.2 - iPhone se, no screen, mainly because the fetch API.
 *               Solved by add whatwg-fetch polyfill like below in entry property.
 *               Worked but FPS is low.
-*               11. - iPhone 8, */
+*               11. 0.3 - iPhone 8, Run perfect, full FPS, even without fetch polyfill.*/
 
 
 module.exports = {
@@ -68,16 +68,35 @@ module.exports = {
                         {
                             loader: 'css-loader',
                             options: {
+                                url:false,
                                 minimize: true,
                                 sourceMap: true
                             }
                         }
                     ]
                 })
-            }
+            },
+           {
+               test: /\.(png|svg|jpg|gif)$/,
+               use: [
+                   {
+                       loader: 'file-loader',
+                       options: {
+                           // this path is relative to the output path
+                           outputPath: './img'
+                       }
+                   }
+               ]
+           }
        ]
     },
     plugins: [
+        new CleanWebpackPlugin(
+            ['../dist'],
+            {
+                allowExternal: true
+            }
+        ),
         new HtmlWebpackPlugin({
             title: 'My template',
             template: './public/index.html',
@@ -103,16 +122,19 @@ module.exports = {
             }
         ]),
         new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-        new ExtractTextPlugin("styles.css"),
+        new ExtractTextPlugin({
+            filename: 'css/styles.css'
+        }),
     ],
     devtool: 'inline-source-map',
     devServer: {
-        contentBase:path.join(__dirname, "public"),
+        contentBase: '../',
         compress: true,
         port: 8080
     },
     output: {
         filename: 'bundle.js',
+        // this path should be an absolute path!
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/'
     }
