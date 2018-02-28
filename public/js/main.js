@@ -10,7 +10,8 @@ import {createLevelLoader} from './loaders/level.js';
 import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
 import {createDashboardLayer} from './layers/dashboard.js';
-import {setupKeyboard} from './input/input.js';
+import {setupTouchPad, setupKeyboard} from './input/input.js';
+import {detectMobileMode} from './polyfills/detectMobileMode.js';
 // import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
@@ -44,9 +45,14 @@ async function main(canvas) {
     const playerEnv = createPlayerEnv(mario);
     level.entities.add(playerEnv);
 
-    const input = setupKeyboard(mario);
-    input.listenTo(window);
-
+    // TODO: listen to window.onresize???
+    const startTouchMode = detectMobileMode();
+    if (startTouchMode) {
+        setupTouchPad(mario);
+    } else {
+        const input = setupKeyboard(mario);
+        input.listenTo(window);
+    }
 
     level.comp.layers.push(createDashboardLayer(font, playerEnv));
 

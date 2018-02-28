@@ -22,23 +22,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 *
 * */
 
-/*Compatibility
-*
-* 0. Before compiled by Babel, Only chrome-61+ (Mainly because of the Async Function).
-* 1. After compiled by Babel,
-*       firefox-47 worked perfect;
-*       Edge-14 worked but cannot handle keyboard input;
-*       IE11 still not work, with Error: Unhandled promise rejection ReferenceError: “fetch”未定义. Abandoned  IE.
-*
-*       Mobile:
-*           Android:
-*               7.0 - Samsung s7, working perfect and smooth.
- *              4.0 - Samsung ,
-*           IOS:
-*               9.3.2 - iPhone se, no screen, mainly because the fetch API.
-*               Solved by add whatwg-fetch polyfill like below in entry property.
-*               Worked but FPS is low.
-*               11. 0.3 - iPhone 8, Run perfect, full FPS, even without fetch polyfill.*/
+
 
 
 module.exports = {
@@ -109,16 +93,8 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             {
-                from: './public/img',
-                to: 'img'
-            },
-            {
-                from: './public/sprites',
-                to: 'sprites'
-            },
-            {
-                from: './public/levels',
-                to: 'levels'
+                from: './public/assets',
+                to: 'assets'
             }
         ]),
         new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),

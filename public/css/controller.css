@@ -44,15 +44,15 @@
 }
 
 .controller-arrow-left {
-    background-image: url("../img/left-arrow.png");
+    background-image: url("../assets/img/left-arrow.png");
     margin-right: 10px;
 }
 .controller-arrow-right {
-    background-image: url("../img/right-arrow.png");
+    background-image: url("../assets/img/right-arrow.png");
 }
 
-#controller-jump {
-    background-image: url("../img/top-arrow.png");
+.controller-arrow-top {
+    background-image: url("../assets/img/top-arrow.png");
 }
 
 .controller-wrapper .controller-circle {
