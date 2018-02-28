@@ -9,7 +9,14 @@ export function createDashboardLayer(font, playerEnv) {
     addPadStartPolyfill();
 
     return function drawDashboard(context) {
-        const {time,score} = playerEnv.playerController;
+        let time = playerEnv.playerController.time;
+        const {score} = playerEnv.playerController;
+
+        //TODO:IMPROVE time counter
+        if (time <= 0) {
+            playerEnv.playerController.time = time = 300;
+        }
+
         font.print('MARIO', context,16, LINE1);
         font.print(score.toString().padStart(6, '0'), context,16, LINE2);
 

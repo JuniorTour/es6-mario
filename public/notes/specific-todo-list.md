@@ -30,7 +30,6 @@ eg: Multiple Touch not Support??? **Done**
 *               Solved by add `whatwg-fetch polyfill` like below in entry property.
 *               Worked but FPS is low.
 *               11.0.3 - iPhone 8, Run perfect, full FPS, even without fetch polyfill.
-               
 
 
 - [] BGM:
