@@ -71,7 +71,6 @@ async function main(canvas) {
         camera.pos.x = Math.max(0, mario.pos.x - 100);
 
         level.comp.draw(context, camera);
-
     };
 
     timer.start();

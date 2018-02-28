@@ -12,7 +12,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 * 1. Copy assets file --- CopyWebpackPlugin
 * 2. Compress/Optimise assets file --- ImageminPlugin
 * 3. Dev Server --- Webpack Dev Server
-* 4. Babel compile
+* 4. Babel compile --- loader: 'babel-loader'
 * 5. Gzip and other Optimise
 *   Before bundle: bundle.js is 71kb,
 *   After bundle without compress and uglify: bundle.js is 138kb,
@@ -21,8 +21,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 *   https://github.com/webpack-contrib/compression-webpack-plugin/issues/63
 *
 * */
-
-
 
 
 module.exports = {

@@ -5,12 +5,12 @@
 
 .controller-wrapper-right {
     bottom: 10%;
-    right: 10%;
+    right: 5%;
 }
 
 .controller-wrapper-left {
     bottom: 25%;
-    left: 10%;
+    left: 5%;
 }
 
 .controller-wrapper .controller {

@@ -10,7 +10,7 @@
 
 Able to implement the function, but I also found some problems.
 
-eg: Multiple Touch not Support???**Done**
+eg: Multiple Touch not Support??? **Done**
 
 
 - [] Compatibility Improve
@@ -24,7 +24,7 @@ eg: Multiple Touch not Support???**Done**
 *       Mobile:
 *           Android:
 *               7.0 - Samsung s7, working perfect and smooth.
-*              4.0 - Samsung ,
+*               YUNOS 5.11 - HUAGAN HT6 , A low end device, cannot run.
 *           IOS:
 *               9.3.2 - iPhone se, no screen, mainly because the fetch API.
 *               Solved by add `whatwg-fetch polyfill` like below in entry property.
@@ -41,3 +41,4 @@ eg: Multiple Touch not Support???**Done**
 
 Web Sound API?
 
+- [] Screen Rotate Support
