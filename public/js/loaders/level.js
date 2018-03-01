@@ -22,12 +22,14 @@ function setupBackground(levelSpec, level, backgroundSprites) {
 }
 
 function setupEntities(levelSpec, level, entityFactory) {
-    levelSpec.entities.forEach(({name, pos: [x,y]}) => {
-        // console.log(name, x,y);
-        const createEntity = entityFactory[name];
-        const entity = createEntity();
-        entity.pos.set(x, y);
-        level.entities.add(entity);
+    const tileSize = 16;
+    levelSpec.entities.forEach(({name, positions}) => {
+        positions.forEach(([x, y]) => {
+            const createEntity = entityFactory[name];
+            const entity = createEntity();
+            entity.pos.set(x*tileSize, y*tileSize);
+            level.entities.add(entity);
+        })
     });
 
     const spriteLayer = createSpriteLayer(level.entities);

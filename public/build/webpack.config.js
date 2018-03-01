@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 /*
 * TODO-List
 *
@@ -17,6 +18,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 *   Before bundle: bundle.js is 71kb,
 *   After bundle without compress and uglify: bundle.js is 138kb,
 *   After bundle with Babel transform runtime: bundle.js is 542kb,
+*
+*   When Almost ready to prod, bundle.js is 590kb now (2018/3/1),
+*   After UglifyJs 77kb!!!
 *
 *   https://github.com/webpack-contrib/compression-webpack-plugin/issues/63
 *
@@ -99,6 +103,9 @@ module.exports = {
         new ExtractTextPlugin({
             filename: 'css/styles.css'
         }),
+        new UglifyJSPlugin({
+             sourceMap: true
+        })
     ],
     devtool: 'inline-source-map',
     devServer: {

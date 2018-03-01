@@ -1,8 +1,31 @@
 # specific-todo-list
 
-- [] Edge KeyBoard Input support.   **Abandoned**
+### Game Related
+
+- [] BGM:
+
+TODO: After finish all the sound, consider a mute whole function
+
+https://codepen.io/MarvinVK/pen/FgAht
+
+- [] Level Design:
+
+- [] Spawn entity at certain time
+
+eg: when mario go to index 124, then spawn the surround other entities.
+
+- [] Sound Effect:
+
+How about Web Sound API?
+
+
+### Performance
 
 - [] Better way to link css.
+
+### Compatibility
+
+- [] Edge KeyBoard Input support.   **Abandoned**
 
 - [] Mobile Control: **Done**
 
@@ -31,15 +54,10 @@ eg: Multiple Touch not Support??? **Done**
 *               Worked but FPS is low.
 *               11.0.3 - iPhone 8, Run perfect, full FPS, even without fetch polyfill.
 
-
-- [] BGM:
-
-TODO: After finish all the sound, consider a mute whole function-
-
-- [] Level Design:
-
-- [] Sound Effect:
-
-Web Sound API?
-
 - [] Screen Rotate Support
+
+
+
+### Other
+
+
