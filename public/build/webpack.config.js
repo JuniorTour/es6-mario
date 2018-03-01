@@ -5,6 +5,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const CompressionPlugin = require("compression-webpack-plugin")
+
+
 /*
 * TODO-List
 *
@@ -21,6 +24,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 *
 *   When Almost ready to prod, bundle.js is 590kb now (2018/3/1),
 *   After UglifyJs 77kb!!!
+*   But with source map it is way more bigger 490kb.
 *
 *   https://github.com/webpack-contrib/compression-webpack-plugin/issues/63
 *
@@ -103,9 +107,13 @@ module.exports = {
         new ExtractTextPlugin({
             filename: 'css/styles.css'
         }),
-        new UglifyJSPlugin({
-             sourceMap: true
-        })
+        new UglifyJSPlugin(
+            {
+                // sourceMap: true
+                /*TODO: ENV
+                * With sourceMap, the bundle is 490kb, otherwise 77kb.*/
+            }
+        )
     ],
     devtool: 'inline-source-map',
     devServer: {

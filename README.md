@@ -42,9 +42,9 @@ npm run prod    // Serve the bundled project in Production Env at http://localho
 
 ### Gif Demo
 
-![]()
+![mario-eg-1-60fps.gif](./public/notes/mario-eg-1-60fps.gif)
 
-![]()
+![mario-eg-2-60fps.gif](./public/notes/mario-eg-2-60fps.gif)
 
 
 
