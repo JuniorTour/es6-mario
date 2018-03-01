@@ -34,6 +34,8 @@ eg: Multiple Touch not Support??? **Done**
 
 - [] BGM:
 
+TODO: After finish all the sound, consider a mute whole function-
+
 - [] Level Design:
 
 - [] Sound Effect:

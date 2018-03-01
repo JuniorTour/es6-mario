@@ -41,25 +41,25 @@ body {
     border-radius: 50%;
 }
 
-#mute-btn {
-    position: fixed;
-    top: 2%;
-    right: 5%;
-    /*background-color: rgba(113,113,113,.5);*/
-}
+/*#mute-btn {*/
+    /*position: fixed;*/
+    /*top: 2%;*/
+    /*right: 5%;*/
+    /*!*background-color: rgba(113,113,113,.5);*!*/
+/*}*/
 
-#mute-btn:hover {
-    background-color: #e6e6e6;
-    border-color: #adadad;
-}
+/*#mute-btn:hover {*/
+    /*background-color: #e6e6e6;*/
+    /*border-color: #adadad;*/
+/*}*/
 
-#mute-btn:active {
-    background-color: #e6e6e6;
-    border-color: #adadad;
-    outline: 0;
-    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-    box-shadow: inset 0 3px 5px rgba(0,0,0,.1);
-}
+/*#mute-btn:active {*/
+    /*background-color: #e6e6e6;*/
+    /*border-color: #adadad;*/
+    /*outline: 0;*/
+    /*-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);*/
+    /*box-shadow: inset 0 3px 5px rgba(0,0,0,.1);*/
+/*}*/
 
 @media (max-width: 1024px) and (min-width: 256px) {
     #screen {

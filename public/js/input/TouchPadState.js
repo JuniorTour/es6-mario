@@ -22,7 +22,7 @@ export default class TouchPadState {
 
         event.preventDefault();
 
-        const keyState = event.type === 'touchstart' ? PRESSED : RELEASED;
+        const keyState = (event.type === 'touchstart' || event.type === 'mousedown') ? PRESSED : RELEASED;
 
         if (this.keyStates.get(codeId) === keyState) {
             // avoid triggering multiple times
@@ -35,7 +35,7 @@ export default class TouchPadState {
     }
 
     startListenTo() {
-        ['touchstart', 'touchend'].forEach(evtName => {
+        ['touchstart', 'touchend', 'mousedown', 'mouseup'].forEach(evtName => {
             this.buttons.forEach(btn => {
                 btn.addEventListener(evtName, evt=> {
                     this.handleEvent(evt);
