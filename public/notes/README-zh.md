@@ -1,11 +1,41 @@
 # 🎮 ES6-Mario
 
-这是一个用HTML5和原生ES6等新特性及语法写成的`Web 游戏`。
+这是一个用原生ES6语法和HTML5新特性写成的`Web 游戏`。
 
-主体结构学习自 [[Meth Meth Method On Youtube](https://www.youtube.com/channel/UC8A0M0eDttdB11MHxX58vXQ)](https://www.youtube.com/watch?v=g-FpDQ8Eqw8&index=1&list=PLS8HfBXv9ZWWe8zXrViYbIM2Hhylx8DZx) by [@Meth Meth Method][https://github.com/meth-meth-method] .
+通过这个项目，你可以在实践中对ES6的主要内容和HTML Canvas 相关API有一个直观的认识。
 
-非常感谢 [@Meth Meth Method][https://github.com/meth-meth-method] 及其作者  [@pomler][https://github.com/pomle]。
+主体结构学习自 [Meth Meth Method On Youtube](https://www.youtube.com/channel/UC8A0M0eDttdB11MHxX58vXQ) [@Meth Meth Method](https://github.com/meth-meth-method).
 
+非常感谢原作者 [@pomler](https://github.com/pomle)，从他那里学到了很多人生经验。
+
+
+## 兼容性
+
+- 较新版的Chrome 和 Firefox
+
+- iOS 9.3.2+ Safari
+
+- Android ~7.0 browser
+
+- NO IE
+
+
+## Demo
+
+### 在线 Demo
+
+# [在线试玩 es6-mario](http://juniortour.net:666/)
+
+# 扫码试玩：
+
+![QR-CODE-es6-mario](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/es6-mario-qr-code.png?raw=true)
+
+
+### Gif Demo
+
+![mario-eg-1-60fps.gif](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/mario-eg-1-60fps.gif?raw=true)
+
+![mario-eg-2-60fps.gif](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/mario-eg-2-60fps.gif?raw=true)
 
 
 ## 运行
@@ -26,29 +56,12 @@ npm run prod    // 打包编译源代码至 ./public/dist 并且 在 http://loca
 ```
 
 
-
-## Demo
-
-### 在线 Demo
-
-# [Play es6-mario Online]()
-
-![QR-CODE-es6-mario]()
-
-
-### Gif Demo
-
-![mario-eg-1-60fps.gif](./public/notes/mario-eg-1-60fps.gif)
-
-![mario-eg-2-60fps.gif](./public/notes/mario-eg-2-60fps.gif)
-
-
-
 ## 经验总结
 
 0. 经常整理代码
 
 可以通过`借助module语法分离声明和实现`，`构建类`等来实现。
+
 ([More.........](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/notes.md))
 
 
@@ -69,6 +82,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 ```
 
 - <2> Super Class - 超类
+
   ([More.........](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/notes.md))
 
 
@@ -161,6 +175,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
     |__ loader.js
   |__ notes
     |__ ......
+|__ .babelrc
 |__ .gitignore
 |__ package.json
 |__ README.md

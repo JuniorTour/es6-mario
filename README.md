@@ -1,14 +1,46 @@
 # 🎮 ES6-Mario
 
-A web game made by ES6 syntax and HTML5.
+A web game written in `ES6` syntax and `HTML5` features, such as `Module, Canvas`.
 
-Learned from [[Meth Meth Method On Youtube](https://www.youtube.com/channel/UC8A0M0eDttdB11MHxX58vXQ)](https://www.youtube.com/watch?v=g-FpDQ8Eqw8&index=1&list=PLS8HfBXv9ZWWe8zXrViYbIM2Hhylx8DZx) by [@Meth Meth Method][https://github.com/meth-meth-method] .
+You can get a specific impression of the ES6 syntax and HTML Canvas Related API through this project.
 
-Many thanks to the [@Meth Meth Method][https://github.com/meth-meth-method] and  [@pomler][https://github.com/pomle].
+Learned from [Meth Meth Method On Youtube](https://www.youtube.com/channel/UC8A0M0eDttdB11MHxX58vXQ) by [@Meth Meth Method](https://github.com/meth-meth-method) . Also recommend this channel strongly for you!
+
+Many thanks to the author [@pomler](https://github.com/pomle), learned a lot from him.
 
 
 
-### [中文版README](./notes/README-zh.md)
+### [中文README](./notes/README-zh.md)
+
+
+## Compatibility
+
+- modern Chrome and Firefox
+
+- iOS 9.3.2+ Safari
+
+- Android 7.0
+
+- NO IE
+
+
+
+## Demo
+
+### Online Demo
+
+# [Click to Play es6-mario Online](http://juniortour.net:666/)
+
+# Scan to Play:
+
+![QR-CODE-es6-mario](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/es6-mario-qr-code.png?raw=true)
+
+
+### Gif Demo
+
+![mario-eg-1-60fps.gif](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/mario-eg-1-60fps.gif?raw=true)
+
+![mario-eg-2-60fps.gif](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/mario-eg-2-60fps.gif?raw=true)
 
 
 
@@ -31,30 +63,13 @@ npm run prod    // Bundle project with Webpack to ./public/dist and Serve the bu
 
 
 
-## Demo
-
-### Online Demo
-
-# [Play es6-mario Online]()
-
-![QR-CODE-es6-mario]()
-
-
-### Gif Demo
-
-![mario-eg-1-60fps.gif](./public/notes/mario-eg-1-60fps.gif)
-
-![mario-eg-2-60fps.gif](./public/notes/mario-eg-2-60fps.gif)
-
-
-
-
-
 ## Experience Summary
 
 0. Regularly Clean up your code
 
-By `split the implementation and declaration with module syntax`, `build a Class`([More.........](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/notes.md))
+By `split the implementation and declaration with module syntax`, `build a Class`.
+
+([More.........](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/notes.md))
 
 
 
@@ -74,6 +89,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 ```
 
 - <2> Super Class
+
   ([More.........](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/notes.md))
 
 
@@ -84,18 +100,18 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 | No.  | Content                    | Finish Date | Extra                                    |
 | ---- | -------------------------- | ----------- | ---------------------------------------- |
-| 0    | Basic Structure            | 2018/2/14   | The day before Spring Festival.          |
-| 1    | Bundle Tool                | ......      | For better compatibilty and performance. |
-| 2    | Mobile Support             | ......      | For more players. Including Virtual Pad. |
-| 3    | Original Map and Minor fix | ......      |                                          |
-| 4    | Performance Optimize        | ......      |  Try to run this game smoothly in low end device.                                        |
-| 4    | Game Related Optimize        | ......      |  Make this game more funny!                                        |
+| 0    | Basic Structure                        | 2018/2/14  | The day before Spring Festival.                                                                     |
+| 1    | Bundle Tool                               | 2018/3/1 | For better compatibilty and performance.                                                      |
+| 2    | Mobile Support                         | 2018/3/4 | For more players. Including Virtual Pad.                                                           |
+| 3    | Original Map and Minor fix     | 2018/3/1 |                                                                                                                                 |
+| 4    | Performance Optimize            | ......            |  Try to run this game smoothly in low end device.                                        |
+| 4    | Game Related Optimize          | ......            |  Make this game more funny!                                                                               |
 
 
 
 
 
-##File Structure
+## File Structure
 
 ```javascript
 |__ public                          Source Code
@@ -169,6 +185,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
     |__ loader.js
   |__ notes
     |__ ......
+|__ .babelrc
 |__ .gitignore
 |__ package.json
 |__ README.md
