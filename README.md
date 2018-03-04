@@ -89,6 +89,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 | 2    | Mobile Support             | ......      | For more players. Including Virtual Pad. |
 | 3    | Original Map and Minor fix | ......      |                                          |
 | 4    | Performance Optimize        | ......      |  Try to run this game smoothly in low end device.                                        |
+| 4    | Game Related Optimize        | ......      |  Make this game more funny!                                        |
 
 
 

@@ -174,10 +174,75 @@ returnPromise()
 
 - <7> ES6 - Data Structure
 
+On ES5, there are mainly two kinds of data structure: Array and Object.
+
+ES6 added `Map` and `Set`.
+
+By the way, in order to handle with these different structure unitedly, ES6 also brought the new `Iterator` syntax.
+
 > Map
+
+A key-value data structure.
+
+It has some methods and prop:
+
+- aMap.size
+
+- aMap.set(key, value)
+
+- aMap.delete(value)
+
+- aMap.get(key)
+
+- aMap.clear()
+
+``` javascript
+const m = new Map();
+
+m.set('edition', 6);
+m.get('edition');   // 6
+
+m.has('edition')     // true
+
+```
+
+
+And iterator methods: keys()，values()，entries(), forEach()
 
 > Set
 
+`Set` has main traits:
+
+- Unique Member
+
+- the order of Add is the order of Iterate
+
+It has some methods and prop:
+
+- aSet.size
+
+- aSet.add(value)
+
+- aSet.delete(value)
+
+- aSet.has(value)
+
+- aSet.clear()
+
+And iterator methods: keys()，values()，entries(), forEach()
+
+``` javascript
+// .entries() return both the kay and its value.
+for (let item of set.entries()) {
+  console.log(item);
+}
+// ["red", "red"]
+// ["green", "green"]
+// ["blue", "blue"]
+
+aSet.size   // 3
+
+```
 
 
 
