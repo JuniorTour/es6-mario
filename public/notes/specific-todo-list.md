@@ -2,7 +2,7 @@
 
 ### Game Related
 
-- [] BGM:
+- [x] BGM:
 
 TODO: After finish all the sound, consider a mute whole function
 
@@ -29,9 +29,9 @@ https://doc.webpack-china.org/guides/production/#%E9%85%8D%E7%BD%AE
 
 ### Compatibility
 
-- [] Edge KeyBoard Input support.   **Abandoned**
+- [x] Edge KeyBoard Input support.   **Abandoned**
 
-- [] Mobile Control: **Done**
+- [x] Mobile Control: **Done**
 
 0. Temp Test
 
@@ -60,6 +60,9 @@ eg: Multiple Touch not Support??? **Done**
 
 - [] Screen Rotate Support
 
+How to implement same ratio scale?
+
+Original Game is 256/240 = 1.0667
 
 
 ### Other

@@ -65,12 +65,14 @@
     line-height: 80px;
 }
 
-@media (max-width: 1024px) {
+/* iPad Pro : 1366*1024*/
+@media (max-width: 1367px) {
     .controller-wrapper {
         display: block;
     }
 }
 
+/* iPhone se : 320*568*/
 @media (max-width: 320px) {
     .controller-wrapper-right {
         bottom: 8%;

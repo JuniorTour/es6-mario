@@ -172,7 +172,11 @@ returnPromise()
 
 ```
 
+- <7> ES6 - Data Structure
 
+> Map
+
+> Set
 
 
 
@@ -253,13 +257,15 @@ https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 
 https://www.scirra.com/tutorials/67/delta-time-and-framerate-independence
 
-目前的帧数（更新画面的频率）由requestAnimationFrame决定，
-但当计算机的性能不足，帧数较低时，游戏内的速度（FPS-frame per second）会变的很慢；
-相反，帧数太高，游戏的速度又会太快。
-为了解决这个问题，我们需要一个更独立的时钟用来更新画面、决定帧数。
-“Decouple the internal frame rate from running frame rate.”
-参考这个问题：Controlling fps with requestAnimationFrame?
+目前的游戏运行速度（具体例如一秒钟人物可以移动多远）由requestAnimationFrame决定，
+但当计算机的性能不足，帧数较低时，游戏的速度会变慢；相反，帧数太高，游戏的速度又会太快。
+例如：在30fps时，马里奥每秒钟走16格；但是在60fps时，却会走32格。
+这不利于良好的游戏体验。
 
+为了解决这个问题，我们需要一个更独立的时钟用来更新画面、稳定游戏运行的速度。
+“Decouple the internal frame rate from running frame rate.”
+
+参考这个问题：Controlling fps with requestAnimationFrame?
 https://stackoverflow.com/questions/19764018/controlling-fps-with-requestanimationframe
 
 
@@ -309,7 +315,8 @@ if (积累的时间 > 1/60) {
 
 - <2> Physical Effect - Inertia Force and Friction Force in Game(Ep8)
 
-In our game, mario has Inertia Force and Friction Force, when he stop to run, he have to walk further. And when he is running, his velocity will be slow down partly by the Friction Force, the implementation is like below:
+In our game, mario has Inertia Force and Friction Force, when he stop to run, he have to walk a bit more.
+And when he is running, his velocity will be slow down partly by the Friction Force, the implementation is like below:
 
 ``` javascript
 // ./js/traits/go.js
@@ -361,17 +368,11 @@ function frameRoute(mario) {
 - <3> Grace Period (宽限期) - EP8
 
 Without the Grace Period, the mario's jump is hard to control.
- When we press the jump key many times continuously, we can only get one time of jump, and another jump have to be trigger when we landed. It makes the game tricky.
+When we press the jump key many times continuously, we can only get one time of jump, and another jump have to be trigger when we landed. It makes the game tricky.
 
  With the Grace Period (implementation is in ./js/traits/jump.js), during a limit time period, we allow mario to jump another time followed by his former jump. Then the game feels more silky~~~
 
-5. ES6 - Data Structure
-
-> Map
-
-> Set
-
-6. Semicolon or Not?
+5. Semicolon or Not?
 
 ```
 input.listenTo(window);
@@ -380,6 +381,5 @@ input.listenTo(window);
         ['mousedown', 'mousemove'].forEach(eventName => {
 ```
 
-7. Magic String / Number
+6. Magic String / Number
 
-## File Structure

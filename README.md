@@ -25,7 +25,7 @@ npm run dev     // Start Development at http://localhost:8080
 
 npm run build   // Bundle project with Webpack to ./public/dist
 
-npm run prod    // Serve the bundled project in Production Env at http://localhost:666
+npm run prod    // Bundle project with Webpack to ./public/dist and Serve the bundled project in Production Env at http://localhost:666
 
 ```
 
@@ -88,7 +88,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 | 1    | Bundle Tool                | ......      | For better compatibilty and performance. |
 | 2    | Mobile Support             | ......      | For more players. Including Virtual Pad. |
 | 3    | Original Map and Minor fix | ......      |                                          |
-| 4    | ......                     | ......      |                                          |
+| 4    | Performance Optimize        | ......      |  Try to run this game smoothly in low end device.                                        |
 
 
 
@@ -97,17 +97,35 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 ##File Structure
 
 ```javascript
-|__ public
+|__ public                          Source Code
   |__ index.html
-  |__ img
-    |__ characters.gif
-    |__ font.png
-    |__ tiles.png
+  |__ assets
+      |__ img
+        |__ characters.gif
+        |__ font.png
+        |__ tiles.png
+      |__ levels                    Level Content Config
+        |__ 1-1.json
+      |__ sound
+        |__ overworld-bgm.mp3
+      |__ sprites                   Charecter Sprites Config
+        |__ goomba.json
+        |__ koopa.json
+        |__ mario.json
+        |__ overworld.json
+        |__ underworld.json
+  |__ build
+    |__ prod-server.js
+    |__ webpack.config.js     webpack Config
+  |__ css
+    |__ ......
   |__ js
     |__ entities
       |__ Goomba.js
       |__ Koopa.js
       |__ Mario.js
+    |__ input                       Keyboard and Touch Input Control
+      |__ ......
     |__ layers
       |__ background.js
       |__ camera.js
@@ -117,6 +135,18 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
     |__ loaders
       |__ font.js
       |__ level.js
+    |__ polyfill
+      |__ ......
+    |__ traits                      Charecter Traits Config
+      |__ Go.js
+      |__ Jump.js
+      |__ Killable.js
+      |__ PendulumMove.js
+      |__ Physics.js
+      |__ PlayerController.js
+      |__ Solid.js
+      |__ Stomer.js
+      |__ Velocity.js
     |__ anim.js
     |__ BoundingBox.js
     |__ Camera.js
@@ -136,26 +166,8 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
     |__ Timer.js
     |__ Level.js
     |__ loader.js
-    |__ traits
-      |__ Go.js
-      |__ Jump.js
-      |__ Killable.js
-      |__ PendulumMove.js
-      |__ Physics.js
-      |__ PlayerController.js
-      |__ Solid.js
-      |__ Stomer.js
-      |__ Velocity.js
-  |__ levels
-    |__ 1-1.json
   |__ notes
-    |__ notes.md
-  |__ sprites
-    |__ goomba.json
-    |__ koopa.json
-    |__ mario.json
-    |__ overworld.json
-    |__ underworld.json
+    |__ ......
 |__ .gitignore
 |__ package.json
 |__ README.md
