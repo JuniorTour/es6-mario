@@ -1,9 +1,7 @@
 export default class Timer {
     constructor(deltaTime = 1/60) {
         let accumulatedTime = 0;
-        // let lastTime = 0;
-        // TODO:BUG The first time update too many times if the lastTime = 0 .
-        let lastTime = performance.now();
+        let lastTime = 0;
 
         this.updateProxy =  (time) => {
             accumulatedTime += (time - lastTime) / 1000;

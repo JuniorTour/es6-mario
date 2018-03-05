@@ -322,8 +322,23 @@ https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 
 https://www.scirra.com/tutorials/67/delta-time-and-framerate-independence
 
-目前的游戏运行速度（具体例如一秒钟人物可以移动多远）由requestAnimationFrame决定，
-但当计算机的性能不足，帧数较低时，游戏的速度会变慢；相反，帧数太高，游戏的速度又会太快。
+游戏运行速度（以一个具体指标为例：一秒钟人物可以移动多远）如果由requestAnimationFrame决定，
+例如：
+``` javascript
+     const deltaTime = (1/60);
+     function update() {
+         level.update(deltaTime);
+
+         camera.pos.x = Math.max(0, mario.pos.x - 100);
+
+         level.comp.draw(context, camera);
+         requestAnimationFrame(update)
+     }
+     requestAnimationFrame(update)
+```
+
+那么当计算机的性能不足，帧数较低时，游戏的速度会变慢（一秒钟人物会移动的更近）；
+相反，帧数太高，游戏的速度又会太快（一秒钟人物会移动的更远）。
 例如：在30fps时，马里奥每秒钟走16格；但是在60fps时，却会走32格。
 这不利于良好的游戏体验。
 

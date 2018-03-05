@@ -11,8 +11,9 @@ import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
 import {createDashboardLayer} from './layers/dashboard.js';
 import {setupTouchPad, setupKeyboard} from './input/input.js';
-import {detectMobileMode} from './polyfills/detectMobileMode.js';
-// import {createCollisionLayer} from './layers/collision.js'
+import {getUserAgent} from './polyfills/getUserAgent.js';
+import {autoPlayOniOS} from './polyfills/autoPlayOniOS.js';
+import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
@@ -45,25 +46,37 @@ async function main(canvas) {
     const playerEnv = createPlayerEnv(mario);
     level.entities.add(playerEnv);
 
-    // TODO: listen to window.onresize???
-    const startTouchMode = detectMobileMode();
-    if (startTouchMode) {
+    level.comp.layers.push(createDashboardLayer(font, playerEnv));
+
+    /*Debug Tools : */
+    // level.comp.layers.push(createCollisionLayer(level));
+    // level.comp.layers.push(createCameraLayer(camera));
+    // setupMouseControl(canvas, mario, camera);
+
+    // TODO Optimize Hack for Compatibility
+    let fps = 1/60;
+
+    const uaInfo = getUserAgent();
+    if (uaInfo.platform === 'Android' ||
+        uaInfo.platform === 'iOS') {
         setupTouchPad(mario);
+
+        // For low-end device, decrease fps for performance.
+        if ((uaInfo.platform === 'iOS' && uaInfo.ver < 10)
+              || (uaInfo.platform === 'Android' && uaInfo.ver < 7)) {
+            fps = 1/20;
+        }
+
+        if (uaInfo.platform === 'iOS') {
+            autoPlayOniOS();
+        }
     } else {
+        // TODO: listen to window.onresize???
         const input = setupKeyboard(mario);
         input.listenTo(window);
     }
 
-    level.comp.layers.push(createDashboardLayer(font, playerEnv));
-
-    /*Debug Tools : */
-    // level.comp.layers.push(
-    //     createCollisionLayer(level),
-    //     createCameraLayer(camera));
-    // setupMouseControl(canvas, mario, camera);
-
-
-    const timer = new Timer(1/60);
+    const timer = new Timer(fps);
 
     timer.update = function update(deltaTime) {
         level.update(deltaTime);

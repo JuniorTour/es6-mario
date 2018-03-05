@@ -58,11 +58,34 @@ eg: Multiple Touch not Support??? **Done**
 *               Worked but FPS is low.
 *               11.0.3 - iPhone 8, Run perfect, full FPS, even without fetch polyfill.
 
-- [] Screen Rotate Support
+- [x] Screen Rotate Support
 
 How to implement same ratio scale?
 
 Original Game is 256/240 = 1.0667
+
+Solved by media query:
+
+``` css
+/* iPad Pro : 768*1024*/
+@media (max-width: 1024px) and (orientation:portrait) {
+    #screen {
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-width: 1024px) and (orientation:landscape) {
+    #screen {
+        width: auto;
+        height:100vh;
+    }
+}
+```
+
+
+- [] BGM auto play on mobile:
+
+https://gist.github.com/ufologist/50b4f2768126089c3e11
 
 
 ### Other

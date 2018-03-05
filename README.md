@@ -10,7 +10,7 @@ Many thanks to the author [@pomler](https://github.com/pomle), learned a lot fro
 
 
 
-### [中文README](./notes/README-zh.md)
+### [中文README](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/README-zh.md)
 
 
 ## Compatibility
@@ -105,7 +105,8 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 | 2    | Mobile Support                         | 2018/3/4 | For more players. Including Virtual Pad.                                                           |
 | 3    | Original Map and Minor fix     | 2018/3/1 |                                                                                                                                 |
 | 4    | Performance Optimize            | ......            |  Try to run this game smoothly in low end device.                                        |
-| 4    | Game Related Optimize          | ......            |  Make this game more funny!                                                                               |
+| 5    | Game Related Optimize          | ......            |  Make this game more funny!                                                                               |
+| 6    | Webpack Env Config                 | ......            |                                                                                                                               |
 
 
 

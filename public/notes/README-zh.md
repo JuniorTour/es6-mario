@@ -45,7 +45,7 @@ git clone https://github.com/JuniorTour/es6-mario
 
 cd es6-mario
 
-npm install
+npm install        // 国内推荐cnpm，速度更快
 
 npm run dev     // 在 http://localhost:8080 启动开发服务器
 
@@ -98,6 +98,8 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 | 2    | 移动端兼容                                | 2018/3/4      | 为了支持目前互联网的主流。                                                               |
 | 3    | 原版地图和游戏内容                  | 2018/3/1      |                                                                                                                |
 | 4    | 性能优化                                    |                         | 尝试让低端设备（iPhone se,...）也能以较为流畅的帧数运行               |
+| 5    | 游戏体验相关优化          | ......            |  让游戏更有趣！                                                                            |
+| 6    | Webpack 环境配置          | ......            |                                                                                 |
 
 
 
