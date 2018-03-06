@@ -61,12 +61,34 @@ body {
     /*box-shadow: inset 0 3px 5px rgba(0,0,0,.1);*/
 /*}*/
 
+.github-btn-wrapper {
+    position: fixed;
+    top: 2%;
+    right: 2%;
+}
+
+.github-btn-wrapper > iframe {
+    display: block;
+    margin-bottom: 6px;
+}
 
 /* iPad Pro : 768*1024*/
 @media (max-width: 1024px) and (orientation:portrait) {
     #screen {
         width: 100%;
         height: auto;
+    }
+
+    .github-btn-wrapper {
+        width: 100%;
+        text-align: center;
+        top: auto;
+        right: auto;
+        bottom: 2%;
+    }
+
+    .github-btn-wrapper > iframe {
+        display: inline-block;
     }
 }
 @media (max-width: 1024px) and (orientation:landscape) {

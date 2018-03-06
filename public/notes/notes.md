@@ -26,6 +26,23 @@ eg: `"something-exact": "1.23"` and `"something": "^1.23"
 
 > `--save` can be simplified to '-S', `--save-dev` can be simplified to '-D'
 
+3. CSS Media Query Hack
+
+https://stackoverflow.com/questions/30102792/css-media-query-target-only-ios-devices
+
+``` css
+@supports (-webkit-overflow-scrolling: touch) {
+  /* CSS specific to iOS devices */
+}
+
+@supports not (-webkit-overflow-scrolling: touch) {
+  /* CSS for other than iOS devices */
+}
+
+/*It works because only Safari Mobile implements it:
+    https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling*/
+```
+
 ## Topic Summary Notes
 0. Es6 Syntax
 
