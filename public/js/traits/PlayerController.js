@@ -5,7 +5,7 @@ export default class PlayerController extends Trait {
     constructor() {
         super('playerController');
         this.player = null;
-        this.checkPoint = new Vec2(64,64);
+        this.checkPoint = new Vec2(4*16,12*16);
         this.time = 300;
         this.score = 0;
     }

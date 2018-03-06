@@ -19,6 +19,7 @@ eg: when mario go to index 124, then spawn the surround other entities.
 How about Web Sound API?
 
 
+
 ### Performance
 
 - [] Better way to link css.
@@ -26,6 +27,8 @@ How about Web Sound API?
 - [] Webpack Env
 
 https://doc.webpack-china.org/guides/production/#%E9%85%8D%E7%BD%AE
+
+
 
 ### Compatibility
 
@@ -89,5 +92,9 @@ https://gist.github.com/ufologist/50b4f2768126089c3e11
 
 
 ### Other
+
+- [] Mobile Magnifier
+
+On Mobile Phone, long press will trigger a magnifier.
 
 

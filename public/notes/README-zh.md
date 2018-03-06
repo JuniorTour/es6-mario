@@ -9,13 +9,13 @@
 非常感谢原作者 [@pomler](https://github.com/pomle)，从他那里学到了很多人生经验。
 
 
-## 兼容性
+## 浏览器兼容性
 
-- 较新版的Chrome 和 Firefox
+- Modern Chrome and Firefox
 
-- iOS 9.3.2+ Safari
+- iOS Safari 9+
 
-- Android ~7.0 browser
+- Android 7.0+
 
 - NO IE
 

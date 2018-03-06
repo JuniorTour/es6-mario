@@ -13,13 +13,13 @@ Many thanks to the author [@pomler](https://github.com/pomle), learned a lot fro
 ### [中文README](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/README-zh.md)
 
 
-## Compatibility
+## Browser Support
 
-- modern Chrome and Firefox
+- Modern Chrome and Firefox
 
-- iOS 9.3.2+ Safari
+- iOS Safari 9+
 
-- Android 7.0
+- Android 7.0+
 
 - NO IE
 

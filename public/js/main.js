@@ -40,7 +40,7 @@ async function main(canvas) {
     const camera = new Camera();
 
     const mario = entityFactory.mario();
-    mario.pos.set(4*16, 100);
+    mario.pos.set(4*16, 12*16);
     level.entities.add(mario);
 
     const playerEnv = createPlayerEnv(mario);

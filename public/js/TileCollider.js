@@ -26,6 +26,10 @@ export default class TileCollider {
         );
 
         matches.forEach(match => {
+            if (match.tile.type === 'death-border') {
+                entity.killable.kill();
+            }
+
             if (match.tile.type !== 'ground') {
                 return;
             }
@@ -61,6 +65,10 @@ export default class TileCollider {
         );
 
         matches.forEach(match => {
+            if (match.tile.type === 'death-border') {
+                entity.killable.kill();
+            }
+
             if (match.tile.type !== 'ground') {
                 return;
             }
