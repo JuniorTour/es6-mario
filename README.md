@@ -199,7 +199,9 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 ## The End
 
-If you have any idea about this project, feel free to talk with me in any way.
+This project is developing, there are still many bugs, please forgive for this troubles, I will fix it up asap and you are welcome to help it.
+
+ If you have any idea about this project, feel free to talk with me in any way.
 
 My GitHub: [@JuniorTour](https://github.com/JuniorTour).
 

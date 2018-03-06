@@ -187,6 +187,8 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 ## 结语
 
+这个项目还在开发之中，仍有许多不足之处，请原谅我迫不及待地分（pian）享（zan），我会尽快修复这些问题，也很欢迎你来帮助我。
+
 非常渴望听到你的意见！欢迎通过各种方式联系我：
 
 My GitHub: [@JuniorTour](https://github.com/JuniorTour).
