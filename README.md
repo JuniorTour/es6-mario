@@ -1,8 +1,8 @@
 # 🎮 ES6-Mario
 
-A web game written in `ES6` syntax and `HTML5` features, such as `Module, Canvas`.
+A web game written in ES6 syntax and HTML5 features, such as `Module, Canvas`.
 
-You can get a specific impression of the ES6 syntax and HTML Canvas Related API through this project.
+You can get a specific impression of the `ES6` syntax, `HTML Canvas` Related API and `Webpack` simple config through this project.
 
 Learned from [Meth Meth Method On Youtube](https://www.youtube.com/channel/UC8A0M0eDttdB11MHxX58vXQ) by [@Meth Meth Method](https://github.com/meth-meth-method) . Also recommend this channel strongly for you!
 
@@ -63,6 +63,100 @@ npm run prod    // Bundle project with Webpack to ./public/dist and Serve the bu
 
 
 
+## Study Guide
+
+At first, personally I think `good code is self documenting`, the code of this project is **semantic**. The class name, variable name can express themselves. Only read the source code you can understand the main logic of this game.
+
+Let me introduce the main logic:
+
+0. This game is start from `es6-mario/public/js/main.js`, in this function, each Entities(Like mario, goomba etc) are created. And the `Main Loop` start:
+
+```javascript
+const timer = new Timer(fps);
+
+timer.update = function update(deltaTime) {
+  level.update(deltaTime);
+
+  camera.pos.x = Math.max(0, mario.pos.x - 100);
+
+  level.comp.draw(context, camera);
+};
+
+timer.start();
+```
+
+This is the core of game, the three lines are responsible for `update the entity status`, `move the camera`, `draw every layers`.
+
+
+
+1. Update the entity
+
+This part start from `level.update(deltaTime);` in the main loop, then step into the `update()` method in public/js/Level.js .
+
+```javascript
+    update(deltaTime) {
+        this.entities.forEach(entity => {
+            entity.update(deltaTime, this);
+        });
+
+
+        this.entities.forEach(entity => {
+            entity.finalize();
+
+            this.entityCollider.check(entity);
+        });
+
+        this.totalTime += deltaTime;
+    }
+```
+
+Here, this method invoke each entities' update method, calculate the status (pos, collision etc) of them.
+
+
+
+2. Move camera
+
+This function is cooperate with the draw layers function, after main loop update the pos of camera, each layer will update itself according to the pos of camera.
+
+For example, in /public/js/layers/background.js, every time it `drawBackgroundLayer`, the exact pos of background layer will move according to the pos of camera.
+
+```javascript
+    return function drawBackgroundLayer(context, camera) {
+        const drawWidth = resolver.toIndex(camera.size.x),
+            drawFrom = resolver.toIndex(camera.pos.x);
+        const drawEnd = drawFrom + drawWidth;
+
+        redraw(drawFrom, drawEnd);
+
+        context.drawImage(
+            buffer,
+            -camera.pos.x % 16,
+            -camera.pos.y);
+    }
+```
+
+
+
+3. Draw layers
+
+The code of his part is mainly under the /public/js/layers. There are background layer, camera layer, collision layer, sprite layer, dashboard layer. As the name of each layers, it control the painting of itself.
+
+In here: https://www.youtube.com/watch?v=I1RTsqUz-t0&t=903s , you can get a directly demo.
+
+
+
+4. Input, Timer, Entity Trait, Physical Effect and so on
+
+In addition to the function above, this game also have many other unique function you deserve to learn about.
+
+
+
+Besides, If you really intend to learn this project systemically, I **strongly recommend the series of the original author: <https://www.youtube.com/watch?v=g-FpDQ8Eqw8&t=2s>  **。
+
+
+
+
+
 ## Experience Summary
 
 0. Regularly Clean up your code
@@ -100,13 +194,13 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 | No.  | Content                    | Finish Date | Extra                                    |
 | ---- | -------------------------- | ----------- | ---------------------------------------- |
-| 0    | Basic Structure                        | 2018/2/14  | The day before Spring Festival.                                                                     |
-| 1    | Bundle Tool                               | 2018/3/1 | For better compatibilty and performance.                                                      |
-| 2    | Mobile Support                         | 2018/3/4 | For more players. Including Virtual Pad.                                                           |
-| 3    | Original Map and Minor fix     | 2018/3/1 |                                                                                                                                 |
-| 4    | Performance Optimize            | ......            |  Try to run this game smoothly in low end device.                                        |
-| 5    | Game Related Optimize          | ......            |  Make this game more funny!                                                                               |
-| 6    | Webpack Env Config                 | ......            |                                                                                                                               |
+| 0    | Basic Structure            | 2018/2/14   | The day before Spring Festival.          |
+| 1    | Bundle Tool                | 2018/3/1    | For better compatibilty and performance. |
+| 2    | Mobile Support             | 2018/3/4    | For more players. Including Virtual Pad. |
+| 3    | Original Map and Minor fix | 2018/3/1    |                                          |
+| 4    | Performance Optimize       | ......      | Try to run this game smoothly in low end device. |
+| 5    | Game Related Optimize      | ......      | Make this game more funny!               |
+| 6    | Webpack Env Config         | ......      |                                          |
 
 
 

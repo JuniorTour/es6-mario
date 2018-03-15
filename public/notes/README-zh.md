@@ -2,7 +2,7 @@
 
 这是一个用原生ES6语法和HTML5新特性写成的`Web 游戏`。
 
-通过这个项目，你可以在实践中对ES6的主要内容和HTML Canvas 相关API有一个直观的认识。
+通过这个项目，你可以在实践中对`ES6`的主要内容、`HTML Canvas` 相关API以及`Webpack`的基础配置有一个直观的认识。
 
 主体结构学习自 [Meth Meth Method On Youtube](https://www.youtube.com/channel/UC8A0M0eDttdB11MHxX58vXQ) [@Meth Meth Method](https://github.com/meth-meth-method).
 
@@ -56,6 +56,101 @@ npm run prod    // 打包编译源代码至 ./public/dist 并且 在 http://loca
 ```
 
 
+
+## 学习指南
+
+首先我觉得`好的代码本身就是注释`，这个项目的代码语义性还是挺强的，变量、类名都能解释它自己，仅仅阅读源代码，也能大致理解项目的运行逻辑。
+
+我向大家概括的介绍一下游戏的主要逻辑：
+
+0. 项目由es6-mario/public/js/main.js开始，在这个主函数中，创建了游戏内的一个个`实体（Entity）`，就是马里奥、乌龟等等，并且开始游戏的`主循环`：
+
+```
+    const timer = new Timer(fps);
+
+    timer.update = function update(deltaTime) {
+        level.update(deltaTime);
+
+        camera.pos.x = Math.max(0, mario.pos.x - 100);
+
+        level.comp.draw(context, camera);
+    };
+
+    timer.start();
+
+```
+
+这个主循环就是游戏的核心，主循环中的这三行分别负责一帧一帧地`更新实体`、`移动镜头`、`绘制背景`等层次。
+
+
+
+1. 更新实体
+   这部分的内容由主循环中的`level.update(deltaTime);`开始，进入到Level.js中的update方法：
+
+```
+    update(deltaTime) {
+        this.entities.forEach(entity => {
+            entity.update(deltaTime, this);
+        });
+
+
+        this.entities.forEach(entity => {
+            entity.finalize();
+
+            this.entityCollider.check(entity);
+        });
+
+        this.totalTime += deltaTime;
+    }
+```
+
+这个方法再分别调用各个实体的update方法，将各个实体的状态（位置、碰撞检测）等等计算出来。
+
+
+
+2. 移动镜头
+
+移动镜头的功能是和绘制各层相配合实现的，在主循环中只有简单的更新镜头位置这一行代码，但是对于各层来说，会根据这个镜头（camera）的位置（pos）决定绘制出该层的某一段。
+
+例如在 /public/js/layers/background.js 中，每次绘制这个背景层时，就会根据 camera.pos.x 来决定具体绘制那哪一段背景：
+
+```
+    return function drawBackgroundLayer(context, camera) {
+        const drawWidth = resolver.toIndex(camera.size.x),
+            drawFrom = resolver.toIndex(camera.pos.x);
+        const drawEnd = drawFrom + drawWidth;
+
+        redraw(drawFrom, drawEnd);
+
+        context.drawImage(
+            buffer,
+            -camera.pos.x % 16,
+            -camera.pos.y);
+    }
+```
+
+3. 绘制背景
+
+这部分的代码主要在/public/js/layers文件夹下，目前有背景层、镜头层、碰撞层、精灵层、面板层，分别控制相应层次的绘制内容。
+
+你可以在这：<https://www.youtube.com/watch?v=I1RTsqUz-t0&t=903s> ， 看到一个非常直观的演示。
+
+分层绘制也是2D游戏编程的常用技巧。
+
+
+
+4. 输入、内置时钟、实体特性、物理效果等
+
+除了主循环的这三个主要功能外，这个游戏还有很多特别的功能，诸如内置时钟：es6-mario/public/js/Timer.js ， 保证游戏运行速度不受帧数影响；键盘输入、虚拟触摸输入：[https://github.com/JuniorTour/es6-mario/tree/master/public/js/input；影响实体行为的不同特性：/public/js/traits/](https://github.com/JuniorTour/es6-mario/tree/master/public/js/input%EF%BC%9B%E5%BD%B1%E5%93%8D%E5%AE%9E%E4%BD%93%E8%A1%8C%E4%B8%BA%E7%9A%84%E4%B8%8D%E5%90%8C%E7%89%B9%E6%80%A7%EF%BC%9A/public/js/traits/) 等等等等。
+
+
+
+另外，如果你确实有意系统地学习这个项目的代码，我还是向你推荐 **原作者的视频教程**：**[https://www.youtube.com/watch?v=g-FpDQ8Eqw8&t=2s。](https://www.youtube.com/watch?v=g-FpDQ8Eqw8&t=2s%E3%80%82)**
+
+
+
+
+
 ## 经验总结
 
 0. 经常整理代码
@@ -91,15 +186,15 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 
 ## ToDo-List
 
-| No.  | Content                                    | Finish Date | Extra                                                                                                          |
-| ---- | -------------------------- | ----------- | ----------------------------------------                                        |
-| 0    | 基础结构                                     | 2018/2/14   | 春节前日                                                                                                  |
-| 1    | 打包工具                                     | 2018/3/1      | 为了实现更好的兼容性和性能。                                                           |
-| 2    | 移动端兼容                                | 2018/3/4      | 为了支持目前互联网的主流。                                                               |
-| 3    | 原版地图和游戏内容                  | 2018/3/1      |                                                                                                                |
-| 4    | 性能优化                                    |                         | 尝试让低端设备（iPhone se,...）也能以较为流畅的帧数运行               |
-| 5    | 游戏体验相关优化          | ......            |  让游戏更有趣！                                                                            |
-| 6    | Webpack 环境配置          | ......            |                                                                                 |
+| No.  | Content      | Finish Date | Extra                              |
+| ---- | ------------ | ----------- | ---------------------------------- |
+| 0    | 基础结构         | 2018/2/14   | 春节前日                               |
+| 1    | 打包工具         | 2018/3/1    | 为了实现更好的兼容性和性能。                     |
+| 2    | 移动端兼容        | 2018/3/4    | 为了支持目前互联网的主流。                      |
+| 3    | 原版地图和游戏内容    | 2018/3/1    |                                    |
+| 4    | 性能优化         |             | 尝试让低端设备（iPhone se,...）也能以较为流畅的帧数运行 |
+| 5    | 游戏体验相关优化     | ......      | 让游戏更有趣！                            |
+| 6    | Webpack 环境配置 | ......      |                                    |
 
 
 

@@ -28,6 +28,16 @@ How about Web Sound API?
 
 https://doc.webpack-china.org/guides/production/#%E9%85%8D%E7%BD%AE
 
+- [] Search for performance bottle neck
+
+``` javascript
+console.memory()
+
+console.time() && console.timeEnd()
+
+console.trace()
+
+```
 
 
 ### Compatibility
@@ -96,5 +106,9 @@ https://gist.github.com/ufologist/50b4f2768126089c3e11
 - [] Mobile Magnifier
 
 On Mobile Phone, long press will trigger a magnifier.
+
+- [] Add Mobile Icon
+
+- [] PWA
 
 
