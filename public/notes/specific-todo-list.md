@@ -33,11 +33,29 @@ https://doc.webpack-china.org/guides/production/#%E9%85%8D%E7%BD%AE
 ``` javascript
 console.memory()
 
-console.time() && console.timeEnd()
+console.time()
+console.timeEnd()
 
 console.trace()
 
 ```
+
+After testing the performance by `control the variable - delete code progressively`,I found the main bottle neck which lead to the heavy stutter in mobile devices at the beginning of game start is `the number of entity`, especially the goomba and koopa.
+
+Besides, the `github-button` in index.html and the `autoPlayOniOS();` also have some influence on the start.
+
+> On my iPhone se @iOS 9.3, once the number of goomba and koopa is more than 1, the game will get heavy stutter.
+>
+> When there is only one mario on the screen, the game can run smoothly at almost 30fps.
+
+I get some ideas about optimizing it:
+
+1. Optimize the spawn logic, only when the entities are near the camera, then we add and show the entities.
+
+2. Web Workers
+
+
+
 
 
 ### Compatibility

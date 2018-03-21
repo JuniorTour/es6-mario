@@ -22,6 +22,7 @@ function setupBackground(levelSpec, level, backgroundSprites) {
 }
 
 function setupEntities(levelSpec, level, entityFactory) {
+    /*TODO: Major Performance Bottle Neck*/
     const tileSize = 16;
     levelSpec.entities.forEach(({name, positions}) => {
         positions.forEach(([x, y]) => {

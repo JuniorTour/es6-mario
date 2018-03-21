@@ -62,16 +62,15 @@ async function main(canvas) {
         setupTouchPad(mario);
 
         // For low-end device, decrease fps for performance.
-        if ((uaInfo.platform === 'iOS' && uaInfo.ver < 10)
-              || (uaInfo.platform === 'Android' && uaInfo.ver < 7)) {
-            fps = 1/20;
-        }
+        // if ((uaInfo.platform === 'iOS' && uaInfo.ver < 11)
+        //       || (uaInfo.platform === 'Android' && uaInfo.ver < 7)) {
+        //     fps = 1/20;
+        // }
 
-        if (uaInfo.platform === 'iOS') {
-            autoPlayOniOS();
-        }
+        // if (uaInfo.platform === 'iOS') {
+        //     autoPlayOniOS();
+        // }
     } else {
-        // TODO: listen to window.onresize???
         const input = setupKeyboard(mario);
         input.listenTo(window);
     }
