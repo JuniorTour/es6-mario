@@ -13,10 +13,69 @@ import {createDashboardLayer} from './layers/dashboard.js';
 import {setupTouchPad, setupKeyboard} from './input/input.js';
 import {getUserAgent} from './polyfills/getUserAgent.js';
 import {autoPlayOniOS} from './polyfills/autoPlayOniOS.js';
-import {createCollisionLayer} from './layers/collision.js'
+// import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
+function addEntities(level, targetEntity, entityFactory) {
+    const tileSize = 16;
+    // debugger
+    const createEntity = entityFactory[targetEntity.name];
+    const entity = createEntity();
+    entity.pos.set(targetEntity.gridPos.x*tileSize, targetEntity.gridPos.y*tileSize);
+    entity.hashId = targetEntity.hashId;
+    level.entities.add(entity);
+}
+
+function checkEntities(level, entityFactory, camera) {
+    /*The logic can be:
+    * 0. When game initiating, record the entity pos and a Unique id for identifying.
+    * 1. During playing, check the pos recorded continuously.
+    * 2. If the pos of an entity is near the camera, And it was not added yet (judge by id), then add it to game.
+    * 3. When an entity was killed, delete it from level.entities.
+    * 4. When the camera get close to the entity Once Again(How to detect???), add it again.
+    *
+    * Data Struc: Two Set.
+    *
+    * Step 4 is difficult now, so I decide to just implement the others.*/
+
+    const tileSize = 16;
+    level.recordedEntities.forEach(entity => {
+        const disFromCamera = (entity.gridPos.x * tileSize) - camera.pos.x;
+        let hasAdded = false;
+
+        let addedEntity;
+        for (addedEntity of level.entities) {
+            if (addedEntity.hashId &&
+                 addedEntity.hashId === entity.hashId) {
+                hasAdded = true;
+                break;
+            }
+
+        }
+
+        if (disFromCamera < 400 && disFromCamera > -400) {
+            if (!hasAdded) {
+                debugger
+                addEntities(level, entity, entityFactory);
+            }
+        } else {
+            // if (hasAdded) {
+            //     // remove added entity
+            //     debugger
+            //     level.entities.delete(addedEntity);
+            // }
+        }
+
+        // level.entities.forEach(addedEntity => {
+        //     if (addedEntity.hashId &&
+        //          addedEntity.hashId === entity.hashId) {
+        //         hasAdded = true;
+        //     }
+        // });
+
+    })
+}
 
 function createPlayerEnv(playerEntity) {
     const playerEnv = new Entity();
@@ -83,6 +142,9 @@ async function main(canvas) {
         camera.pos.x = Math.max(0, mario.pos.x - 100);
 
         level.comp.draw(context, camera);
+
+        // debugger
+        checkEntities(level, entityFactory, camera);
     };
 
     timer.start();

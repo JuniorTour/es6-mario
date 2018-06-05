@@ -26,6 +26,7 @@ export default class TileCollider {
         );
 
         matches.forEach(match => {
+            // TODO: Improve a better logic, maybe not here
             if (match.tile.type === 'death-border') {
                 entity.killable.kill();
             }

@@ -13,7 +13,7 @@
 
 - Modern Chrome and Firefox
 
-- iOS Safari 9+
+- iOS 9+ Safari
 
 - Android 7.0+
 

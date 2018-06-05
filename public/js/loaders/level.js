@@ -21,17 +21,44 @@ function setupBackground(levelSpec, level, backgroundSprites) {
     });
 }
 
-function setupEntities(levelSpec, level, entityFactory) {
-    /*TODO: Major Performance Bottle Neck*/
-    const tileSize = 16;
+function recordEntities(level, levelSpec) {
+    level.recordedEntities = [];
     levelSpec.entities.forEach(({name, positions}) => {
-        positions.forEach(([x, y]) => {
-            const createEntity = entityFactory[name];
-            const entity = createEntity();
-            entity.pos.set(x*tileSize, y*tileSize);
-            level.entities.add(entity);
+        // debugger
+        positions.forEach(gridPos => {
+            const hashId = `${performance.now()}+${level.recordedEntities.length}`;
+            level.recordedEntities.push({
+                hashId,
+                name,
+                gridPos: {
+                    x: gridPos[0],
+                    y: gridPos[1]
+                }
+            })
         })
-    });
+    })
+}
+
+function setupEntities(level, levelSpec) {
+    /*TODO: Major Performance Bottle Neck
+    *
+    * In order to solve this bottle-neck, I have to change the logic of adding entity.
+    * Only when an entity near the Camera or Player, then it will be added.
+    *  So this process should be checked synchronously with Timer.*/
+    // const tileSize = 16;
+    // levelSpec.entities.forEach(({name, positions}) => {
+    //     positions.forEach(([x, y]) => {
+    //         // debugger
+    //         if (x > (camera.pos - (8 * tileSize)) || x < (camera.pos + (8 * tileSize))) {
+    //             const createEntity = entityFactory[name];
+    //             const entity = createEntity();
+    //             entity.pos.set(x*tileSize, y*tileSize);
+    //             level.entities.add(entity);
+    //         }
+    //     })
+    // });
+
+    recordEntities(level, levelSpec);
 
     const spriteLayer = createSpriteLayer(level.entities);
     level.comp.layers.push(spriteLayer);
@@ -49,7 +76,10 @@ export function createLevelLoader(entityFactory) {
 
                 setupLevel(levelSpec, level);
                 setupBackground(levelSpec, level, backgroundSprites);
-                setupEntities(levelSpec, level, entityFactory);
+
+                // level.levelSpec = {};
+                // level.levelSpec.entities = levelSpec.entities;
+                setupEntities(level, levelSpec);
 
                 return level;
             })

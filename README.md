@@ -17,7 +17,7 @@ Many thanks to the author [@pomler](https://github.com/pomle), learned a lot fro
 
 - Modern Chrome and Firefox
 
-- iOS Safari 9+
+- iOS 9+ Safari
 
 - Android 7.0+
 

@@ -11,7 +11,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 /*
 * TODO-List
 *
-* Better Development, Better Compatibility, Better Perfomance
+* Better Development, Better Compatibility, Better Performance
 *
 * 1. Copy assets file --- CopyWebpackPlugin
 * 2. Compress/Optimise assets file --- ImageminPlugin
@@ -106,14 +106,15 @@ module.exports = {
         new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
         new ExtractTextPlugin({
             filename: 'css/styles.css'
-        }),
-        new UglifyJSPlugin(
-            {
-                // sourceMap: true
-                /*TODO: ENV
-                * With sourceMap, the bundle is 490kb, otherwise 77kb.*/
-            }
-        )
+        })
+        // ,
+        // new UglifyJSPlugin(
+        //     {
+        //         // sourceMap: true
+        //         /*TODO: ENV
+        //         * With sourceMap, the bundle is 490kb, otherwise 77kb.*/
+        //     }
+        // )
     ],
     devtool: 'inline-source-map',
     devServer: {

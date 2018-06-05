@@ -16,7 +16,7 @@ eg: when mario go to index 124, then spawn the surround other entities.
 
 - [] Sound Effect:
 
-How about Web Sound API?
+How about Web Sound/Audio API?
 
 
 
@@ -53,6 +53,8 @@ I get some ideas about optimizing it:
 1. Optimize the spawn logic, only when the entities are near the camera, then we add and show the entities.
 
 2. Web Workers
+
+3. Add a loading anim when start up.
 
 
 
