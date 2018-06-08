@@ -22,21 +22,30 @@ function setupBackground(levelSpec, level, backgroundSprites) {
 }
 
 function recordEntities(level, levelSpec) {
-    level.recordedEntities = [];
+    level.toBeAddedEntities = [];
+    level.checkEntitiesPoints = [];
+
     levelSpec.entities.forEach(({name, positions}) => {
         // debugger
         positions.forEach(gridPos => {
-            const hashId = `${performance.now()}+${level.recordedEntities.length}`;
-            level.recordedEntities.push({
+            const hashId = `${performance.now()}+${level.toBeAddedEntities.length}`;
+            level.toBeAddedEntities.push({
                 hashId,
                 name,
                 gridPos: {
                     x: gridPos[0],
                     y: gridPos[1]
-                }
-            })
+                },
+                added: false
+            });
+
+            level.checkEntitiesPoints.push(gridPos[0] * 16 - 301);
+            level.checkEntitiesPoints.push(gridPos[0] * 16 - 300);
+            level.checkEntitiesPoints.push(gridPos[0] * 16 - 299);
         })
     })
+
+    level.entitiesRecord = JSON.parse(JSON.stringify(level.toBeAddedEntities));
 }
 
 function setupEntities(level, levelSpec) {

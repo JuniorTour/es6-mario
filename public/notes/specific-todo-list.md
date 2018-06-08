@@ -131,4 +131,13 @@ On Mobile Phone, long press will trigger a magnifier.
 
 - [] PWA
 
+### BUG
+
+- [] 0. Collision Judgement Sequence Wrong
+
+ When Mario was bounded down by the bricks above his head, his vel.y will be -400,
+ it is less than the vel.y of Goomba, so the Mario will be killed wrongly.
+ After a deeper researching, I found the real cause is the trigger sequence of Stomer and Goomba's collides.
+ The right sequence should be 1. Goomba's collides => 2. Stomer's debounce.
+ But, on the contrary, the sequence usually is Stomer => Goomba, so Mario usually is killed wrongly.
 

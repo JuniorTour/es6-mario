@@ -21,7 +21,7 @@ export default class TileCollider {
         }
 
         const matches = this.tile.searchByRange(
-            entity.bounds.left, entity.bounds.right,
+            x, x,
            entity.bounds.top, entity.bounds.bottom
         );
 
@@ -62,7 +62,7 @@ export default class TileCollider {
 
         const matches = this.tile.searchByRange(
             entity.bounds.left, entity.bounds.right,
-            entity.bounds.top, entity.bounds.bottom
+            y, y
         );
 
         matches.forEach(match => {
