@@ -22,23 +22,25 @@ function setupBackground(levelSpec, level, backgroundSprites) {
 }
 
 function recordEntities(level, levelSpec) {
+    const tileSize = 16;
+
     level.toBeAddedEntities = [];
     level.checkEntitiesPoints = [];
 
     levelSpec.entities.forEach(({name, positions}) => {
-        // debugger
         positions.forEach(gridPos => {
-            const hashId = `${performance.now()}+${level.toBeAddedEntities.length}`;
+            const hashId = `${level.toBeAddedEntities.length}`;
             level.toBeAddedEntities.push({
                 hashId,
                 name,
-                gridPos: {
-                    x: gridPos[0],
-                    y: gridPos[1]
+                pos: {
+                    x: gridPos[0] * tileSize,
+                    y: gridPos[1] * tileSize
                 },
                 added: false
             });
 
+            // TODO: Optimize logic
             level.checkEntitiesPoints.push(gridPos[0] * 16 - 301);
             level.checkEntitiesPoints.push(gridPos[0] * 16 - 300);
             level.checkEntitiesPoints.push(gridPos[0] * 16 - 299);
@@ -54,6 +56,7 @@ function setupEntities(level, levelSpec) {
     * In order to solve this bottle-neck, I have to change the logic of adding entity.
     * Only when an entity near the Camera or Player, then it will be added.
     *  So this process should be checked synchronously with Timer.*/
+
     // const tileSize = 16;
     // levelSpec.entities.forEach(({name, positions}) => {
     //     positions.forEach(([x, y]) => {
@@ -73,7 +76,7 @@ function setupEntities(level, levelSpec) {
     level.comp.layers.push(spriteLayer);
 }
 
-export function createLevelLoader(entityFactory) {
+export function createLevelLoader() {
     return function loadLevel(name) {
         return loadJSON(`../assets/levels/${name}.json`)
             .then(levelSpec => Promise.all([
@@ -85,9 +88,6 @@ export function createLevelLoader(entityFactory) {
 
                 setupLevel(levelSpec, level);
                 setupBackground(levelSpec, level, backgroundSprites);
-
-                // level.levelSpec = {};
-                // level.levelSpec.entities = levelSpec.entities;
                 setupEntities(level, levelSpec);
 
                 return level;

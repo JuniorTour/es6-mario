@@ -22,7 +22,6 @@ export default class Level {
             entity.update(deltaTime, this);
         });
 
-
         this.entities.forEach(entity => {
             entity.finalize();
 
