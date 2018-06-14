@@ -25,13 +25,12 @@ class Behavior extends Trait {
     }
 
     collides(us, them) {
-        // us is our goomba, them often are mario.
         if (us.killable.dead) {
             return;
         }
 
         if (them.stomer) {
-            if (them.vel.y > us.vel.y) {
+            if (them.pos.y < us.pos.y) {
                 this.handleState(us, them);
             } else {
                 this.handleKick(us, them);

@@ -4,7 +4,7 @@ import TileCollider from './TileCollider.js'
 
 export default class Level {
     constructor() {
-        this.gravity = 1500;
+        this.gravity = 1000;
         this.comp = new Compositor();
         this.entities = new Set();
         this.entityCollider = new EntityCollider(this.entities);
@@ -23,9 +23,12 @@ export default class Level {
         });
 
         this.entities.forEach(entity => {
-            entity.finalize();
-
             this.entityCollider.check(entity);
+        });
+
+        // The order of collide and finalize is determined, can not be combined.
+        this.entities.forEach(entity => {
+            entity.finalize();
         });
 
         this.totalTime += deltaTime;

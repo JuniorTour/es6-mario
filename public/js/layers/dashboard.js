@@ -14,7 +14,7 @@ export function createDashboardLayer(font, playerEnv) {
 
         //TODO:IMPROVE time counter
         if (time <= 0) {
-            playerEnv.playerController.time = time = 300;
+            playerEnv.playerController.time = time = 400;
         }
 
         font.print('MARIO', context,16, LINE1);

@@ -26,22 +26,12 @@ function addEntities(level, targetEntity, entityFactory) {
     entity.hashId = targetEntity.hashId;
     level.entities.add(entity);
 
-    // debugger
-    // let index = 0;
-    // for (let toBeAddedEntity of level.toBeAddedEntities) {
-    //     if (toBeAddedEntity.hashId === targetEntity.hashId) {
-    //         level.toBeAddedEntities.splice(index, 1);
-    // TODO: Tiny Optimize for Performance
-    //         break;
-    //     }
-    //     index++;
-    // }
-
-    level.toBeAddedEntities.forEach((toBeAddedEntity, index) => {
-        if (toBeAddedEntity.hashId === targetEntity.hashId) {
-            level.toBeAddedEntities.splice(index, 1);
+    for (let i = 0;i<level.toBeAddedEntities.length;i++) {
+        if (level.toBeAddedEntities[i].hashId === targetEntity.hashId) {
+            level.toBeAddedEntities.splice(i, 1);
+            break;
         }
-    })
+    }
 
 }
 

@@ -28,7 +28,9 @@ export default class TileCollider {
         matches.forEach(match => {
             // TODO: Improve a better logic, maybe not here
             if (match.tile.type === 'death-border') {
-                entity.killable.kill();
+                if (entity.killable !== undefined) {
+                    entity.killable.kill();
+                }
             }
 
             if (match.tile.type !== 'ground') {
@@ -62,12 +64,17 @@ export default class TileCollider {
 
         const matches = this.tile.searchByRange(
             entity.bounds.left, entity.bounds.right,
-            y, y
+            // y,y
+            /*When range is y,y, the check range will be lesser, it is a tiny optimization.
+            But mario will sink into the ground sometimes at lower fps(30).*/
+            entity.bounds.top, entity.bounds.bottom
         );
 
         matches.forEach(match => {
             if (match.tile.type === 'death-border') {
-                entity.killable.kill();
+                if (entity.killable !== undefined) {
+                    entity.killable.kill();
+                }
             }
 
             if (match.tile.type !== 'ground') {

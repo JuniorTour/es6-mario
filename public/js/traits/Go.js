@@ -7,8 +7,8 @@ export default class Go extends Trait {
         super('go');
 
         this.dir = 0;
-        this.acceleration = 400;
-        this.deceleration = 300;
+        this.acceleration = 300;
+        this.deceleration = 200;
         this.dragFactor = 1/5000;
 
         this.distance = 0;

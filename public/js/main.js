@@ -40,7 +40,7 @@ async function main(canvas) {
     const camera = new Camera();
 
     const mario = entityFactory.mario();
-    mario.pos.set(4*16, 12*16);
+    mario.pos.set(2.5*16, 12*16);
     level.entities.add(mario);
 
     const playerEnv = createPlayerEnv(mario);
@@ -57,15 +57,15 @@ async function main(canvas) {
     let fps = 1/60;
 
     const uaInfo = getUserAgent();
-    if (uaInfo.platform === 'Android' ||
-        uaInfo.platform === 'iOS') {
+    if (uaInfo.platform === 'Android'
+        || uaInfo.platform === 'iOS') {
         setupTouchPad(mario);
 
-        // For low-end device, decrease fps for performance.
-        // if ((uaInfo.platform === 'iOS' && uaInfo.ver < 11)
-        //       || (uaInfo.platform === 'Android' && uaInfo.ver < 7)) {
-        //     fps = 1/20;
-        // }
+        // For low-end device, decrease fps for better experience.
+        if ((uaInfo.platform === 'iOS' && uaInfo.ver < 11)
+              || (uaInfo.platform === 'Android' && uaInfo.ver < 7)) {
+            fps = 1/30;
+        }
 
         // if (uaInfo.platform === 'iOS') {
         //     autoPlayOniOS();

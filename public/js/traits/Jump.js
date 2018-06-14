@@ -7,12 +7,12 @@ export default class Jump extends Trait {
         super('jump');
 
         this.duration = 0.3;
-        this.velocity = 200;
+        this.velocity = 180;
         this.engageTime = 0; // total time allow to  pressing key
         this.ready = 0;
         this.gracePeriod = 0.1;
         this.requestTime = 0;
-        this.speedBoost = 0.3;
+        this.speedBoost = 0.2;
     }
 
     get falling() {
