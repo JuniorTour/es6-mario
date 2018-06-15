@@ -8,7 +8,6 @@ export default class PendulumMove extends Trait {
     }
 
     obstruct(entity, side) {
-        debugger
         if (side === Sides.LEFT || side === Sides.RIGHT) {
             this.speed = -this.speed;
         }

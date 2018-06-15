@@ -18,7 +18,6 @@ export default class Stomer extends Trait {
             return;
         }
 
-        debugger
         if ( us.vel.y > them.vel.y) {
             this.bounce(us, them);
             this.onStomp(us, them);

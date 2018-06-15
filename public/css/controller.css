@@ -1,6 +1,8 @@
 .controller-wrapper {
     display: none;
     position: fixed;
+    color: #fff;
+    background-color: rgba(0,0,0,.5);
 }
 
 .controller-wrapper-right {
@@ -14,12 +16,10 @@
 }
 
 .controller-wrapper .controller {
-    background-color: rgba(0,0,0,.5);
-    color: #000;
+    margin: 0 10px;
     font-size: 18px;
     text-align: center;
     line-height: 1;
-    cursor: pointer;
     -webkit-touch-callout:none;
     -webkit-user-select:none;
     -khtml-user-select:none;
@@ -29,46 +29,52 @@
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-.controller-wrapper .controller:active {
-    background-color: #eee;
+.triangle {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-right: 2px solid #fff;
 }
 
-.controller-arrow {
-    width: 80px;
+.triangle:after {
+    content: '';
+    position: absolute;
+    margin: auto;
+    top: 4px;
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.triangle-left:after {
+    right: -17px;
+    transform: rotate(135deg);
+}
+
+.triangle-right {
+    border-right: none;
+    border-left: 2px solid #fff;
+}
+
+.triangle-right:after {
+    left: -16px;
+    transform: rotate(-45deg);
+}
+
+.controller-circle {
+    width: 20px;
     height: 20px;
-    border-radius: 6px;
-    padding: 14px 0;
-    display: inline-block;
-    background-position: -8px -248%;
-    background-size: 120% 150%;
-}
-
-.controller-arrow-left {
-    background-image: url("../assets/img/left-arrow.png");
-    margin-right: 10px;
-}
-.controller-arrow-right {
-    background-image: url("../assets/img/right-arrow.png");
-}
-
-.controller-arrow-top {
-    background-image: url("../assets/img/top-arrow.png");
-}
-
-.controller-wrapper .controller-circle {
+    border: 2px solid #ffa;
     border-radius: 50%;
 }
 
-.controller-wrapper .controller-circle-large {
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-}
 
 /* iPad Pro : 1366*1024*/
 @media (max-width: 1367px) {
     .controller-wrapper {
-        display: block;
+        display: flex;
+        align-items: center;
     }
 }
 
