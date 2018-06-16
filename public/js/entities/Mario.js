@@ -44,6 +44,7 @@ function createMarioFactory(sprite) {
     return function createMario() {
         const mario = new Entity();
         mario.size.set(14, 16);
+        mario.name = 'mario';
 
         mario.addTrait(new Physics());
         mario.addTrait(new Solid());
@@ -51,10 +52,8 @@ function createMarioFactory(sprite) {
         mario.addTrait(new Jump());
         mario.addTrait(new Stomer());
         mario.addTrait(new Killable());
-        // mario.addTrait(new PlayerController());
 
         mario.killable.removeAfter = 0;
-        // mario.playerController.setPlayer(mario);
 
         mario.draw = drawMario;
 

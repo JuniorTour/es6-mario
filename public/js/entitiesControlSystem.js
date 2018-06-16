@@ -1,4 +1,6 @@
 
+export const thirtyBlocks = 320;
+
 function lookForEntity(levelEntities, targetEntity) {
     let ret = false;
 
@@ -13,10 +15,9 @@ function lookForEntity(levelEntities, targetEntity) {
 }
 
 function calculatePosFromCamera(entityPos, cameraPos) {
-    const twentyBlock = 320;
     const disFromCamera = entityPos.x - cameraPos.x;
 
-    return (disFromCamera < twentyBlock && disFromCamera > -twentyBlock);
+    return (disFromCamera <= thirtyBlocks && disFromCamera >= -thirtyBlocks);
 }
 
 function addEntities(level, targetEntity, entityFactory) {

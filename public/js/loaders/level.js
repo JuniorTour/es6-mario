@@ -3,6 +3,8 @@ import Level from '../Level.js'
 import {loadJSON, loadSpriteSheet} from '../loader.js'
 import {createSpriteLayer} from '../layers/sprites.js'
 import {createBackgroundLayer} from '../layers/background.js'
+import {createEntityCheckPoint} from '../entities/EntityCheckPoint.js';
+import {thirtyBlocks} from '../entitiesControlSystem.js';
 
 function setupLevel(levelSpec, level) {
     const mergedCollisionGrid = levelSpec.layers.reduce((mergedTiles, layerSpec) => {
@@ -26,24 +28,47 @@ function recordEntities(level, levelSpec) {
 
     level.toBeAddedEntities = [];
     level.checkEntitiesPoints = [];
+    level.checkEntitiesPointsPosX = [];
 
     levelSpec.entities.forEach(({name, positions}) => {
         positions.forEach(gridPos => {
             const hashId = `${level.toBeAddedEntities.length}`;
+            const pos = {
+                x: gridPos[0] * tileSize,
+                y: gridPos[1] * tileSize
+            };
+
             level.toBeAddedEntities.push({
                 hashId,
                 name,
-                pos: {
-                    x: gridPos[0] * tileSize,
-                    y: gridPos[1] * tileSize
-                },
+                pos,
                 added: false
             });
 
             // TODO: Optimize logic
-            level.checkEntitiesPoints.push(gridPos[0] * 16 - 301);
-            level.checkEntitiesPoints.push(gridPos[0] * 16 - 300);
-            level.checkEntitiesPoints.push(gridPos[0] * 16 - 299);
+            // level.checkEntitiesPoints.push(gridPos[0] * 16 - 301);
+            // level.checkEntitiesPoints.push(gridPos[0] * 16 - 300);
+            // level.checkEntitiesPoints.push(gridPos[0] * 16 - 299);
+            // debugger
+            let checkPosX= pos.x - thirtyBlocks;
+            const initialPos = 2.5 * 16;
+            if (checkPosX < initialPos) {
+                checkPosX = 11 * 16;
+            }
+
+            let noNearCheckPoint = true;
+            level.checkEntitiesPointsPosX.forEach(existCheckPosX => {
+                if (existCheckPosX > (checkPosX - thirtyBlocks) &&
+                     existCheckPosX < (checkPosX + thirtyBlocks)) {
+                    noNearCheckPoint = false;
+                }
+            });
+
+            if (noNearCheckPoint) {
+                level.entities.add(createEntityCheckPoint(checkPosX));
+                level.checkEntitiesPointsPosX.push(checkPosX);
+            }
+
         })
     })
 

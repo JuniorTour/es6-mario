@@ -13,7 +13,7 @@ import {setupTouchPad, setupKeyboard} from './input/input.js';
 import {getUserAgent} from './polyfills/getUserAgent.js';
 import {autoPlayOniOS} from './polyfills/autoPlayOniOS.js';
 import {controlEntities} from './entitiesControlSystem.js';
-// import {createCollisionLayer} from './layers/collision.js'
+import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
@@ -48,7 +48,7 @@ async function main(canvas) {
     level.comp.layers.push(createDashboardLayer(font, playerEnv));
 
     /*Debug Tools : */
-    // level.comp.layers.push(createCollisionLayer(level));
+    level.comp.layers.push(createCollisionLayer(level));
     // level.comp.layers.push(createCameraLayer(camera));
     // setupMouseControl(canvas, mario, camera);
 
@@ -65,9 +65,10 @@ async function main(canvas) {
             fps = 1/30;
         }
 
-        // if (uaInfo.platform === 'iOS') {
-        //     autoPlayOniOS();
-        // }
+        // TODO: Sound System - Web Audio API
+        if (uaInfo.platform === 'iOS') {
+            autoPlayOniOS();
+        }
     } else {
         const input = setupKeyboard(mario);
         input.listenTo(window);

@@ -23,7 +23,7 @@ export default class Level {
         });
 
         this.entities.forEach(entity => {
-            this.entityCollider.check(entity);
+            this.entityCollider.check(entity, this.entities);
         });
 
         // The order of collide and finalize is determined, can not be combined.

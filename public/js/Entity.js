@@ -62,10 +62,10 @@ export default class Entity {
         })
     }
 
-    collides(candidate) {
+    collides(candidate, levelEntities) {
         // console.log('Touched', candidate);
         this.traits.forEach(trait => {
-            trait.collides(this, candidate);
+            trait.collides(this, candidate, levelEntities);
         })
     }
 

@@ -480,3 +480,10 @@ input.listenTo(window);
 
 6. Magic String / Number
 
+
+7. Very curious about the Original Code of this Game!!!
+
+The Super Mario Bro was published in 1985 on the Famicon(NES) platform.
+This platform only have 2kb RAM and 2MHz frequency.
+
+Ref: https://gamedev.stackexchange.com/questions/6145/what-programming-language-was-super-mario-bros-written-in
