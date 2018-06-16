@@ -2,31 +2,46 @@
     display: none;
     position: fixed;
     color: #fff;
-    background-color: rgba(0,0,0,.5);
 }
 
 .controller-wrapper-right {
-    bottom: 10%;
+    bottom: 35%;
     right: 5%;
 }
 
 .controller-wrapper-left {
-    bottom: 25%;
+    bottom: 40%;
     left: 5%;
 }
 
-.controller-wrapper .controller {
+.controller-wrapper-bottom {
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.controller {
+    background-color: rgba(0,0,0,.5);
     margin: 0 10px;
     font-size: 18px;
     text-align: center;
     line-height: 1;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
     user-select:none;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.controller:active {
+    background-color: rgba(135,135,135,.4);
+}
+
+.controller:active.triangle-right:after {
+    left: -6px;
+}
+.controller:active.triangle-left:after {
+    right: -6px;
+}
+.triangle:active {
+    background-color: transparent;
 }
 
 .triangle {
@@ -50,6 +65,7 @@
 .triangle-left:after {
     right: -17px;
     transform: rotate(135deg);
+    transition: right linear .2s;
 }
 
 .triangle-right {
@@ -60,13 +76,33 @@
 .triangle-right:after {
     left: -16px;
     transform: rotate(-45deg);
+    transition: left linear .2s;
 }
 
 .controller-circle {
     width: 20px;
     height: 20px;
-    border: 2px solid #ffa;
+    text-align: center;
+    line-height: 20px;
+    border: 2px solid #fff;
     border-radius: 50%;
+}
+
+.controller-circle-large {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 40px;
+}
+
+.controller-btn {
+    width: 70px;
+    height: 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    border: 2px solid #fff;
+    transform: rotate(-25deg);
 }
 
 
@@ -81,12 +117,12 @@
 /* iPhone se : 320*568*/
 @media (max-width: 320px) {
     .controller-wrapper-right {
-        bottom: 8%;
+        bottom: 35%;
         right: 5%;
     }
 
     .controller-wrapper-left {
-        bottom: 25%;
+        bottom: 35%;
         left: 5%;
     }
 }

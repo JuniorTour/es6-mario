@@ -20,7 +20,7 @@ export default class TouchPadState {
             return;
         }
 
-        event.preventDefault();
+        // event.preventDefault();
 
         const keyState = (event.type === 'touchstart' || event.type === 'mousedown') ? PRESSED : RELEASED;
 
