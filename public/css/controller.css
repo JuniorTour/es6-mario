@@ -2,6 +2,9 @@
     display: none;
     position: fixed;
     color: #fff;
+    z-index: 5;
+    /* In case of performance issue triggered by bad Hardware acceleration.
+    Ref: http://web.jobbole.com/83575*/
 }
 
 .controller-wrapper-right {
@@ -117,12 +120,12 @@
 /* iPhone se : 320*568*/
 @media (max-width: 320px) {
     .controller-wrapper-right {
-        bottom: 35%;
+        bottom: 30%;
         right: 5%;
     }
 
     .controller-wrapper-left {
         bottom: 35%;
-        left: 5%;
+        left: 0;
     }
 }

@@ -1,8 +1,21 @@
+@import './controller.css';
+@import './github-btn.css';
 
 body {
     color: #fff;
     background-color: black;
     margin: 0;
+}
+
+a {
+    color: #24292e;
+    text-decoration: none;
+    outline: none;
+    vertical-align: middle;
+}
+
+a:active {
+    color: #000;
 }
 
 #screen {
@@ -25,41 +38,6 @@ body {
     IE-9.0*/
     margin:auto;
 }
-
-.btn {
-    outline: none;
-    cursor: pointer;
-    color: #333;
-    background-color: rgba(255,255,255,.8);
-    border: 1px solid #ccc;
-}
-
-.btn-circle-middle {
-    width: 48px;
-    height: 48px;
-    line-height:48px;
-    border-radius: 50%;
-}
-
-/*#mute-btn {*/
-    /*position: fixed;*/
-    /*top: 2%;*/
-    /*right: 5%;*/
-    /*!*background-color: rgba(113,113,113,.5);*!*/
-/*}*/
-
-/*#mute-btn:hover {*/
-    /*background-color: #e6e6e6;*/
-    /*border-color: #adadad;*/
-/*}*/
-
-/*#mute-btn:active {*/
-    /*background-color: #e6e6e6;*/
-    /*border-color: #adadad;*/
-    /*outline: 0;*/
-    /*-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);*/
-    /*box-shadow: inset 0 3px 5px rgba(0,0,0,.1);*/
-/*}*/
 
 .github-btn-wrapper {
     position: fixed;

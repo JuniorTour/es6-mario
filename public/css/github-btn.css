@@ -1,0 +1,78 @@
+.github-btn-wrapper {
+    font-size: 11px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.github-btn {
+    display: inline-block;
+    height: 18px;
+    padding: 0 5px;
+    line-height: 18px;
+    background-color: #eff3f6;
+    background-image: linear-gradient(to bottom, #fafbfc, #e4ebf0);
+    background-repeat: repeat-x;
+    background-size: 110% 110%;
+    border: 1px solid #1b1f2333;
+    border-radius: 3px;
+    margin-left: 5px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.github-btn:hover {
+    background-color: #e6ebf1;
+    background-image: linear-gradient(to bottom, #f0f3f6, #dce3ec);
+    border-color: #afb1b2;
+}
+
+.github-btn:active {
+    background-color: #e9ecef;
+    background-image: none;
+    border-color: #afb1b2;
+    box-shadow: inset 0 0.15em 0.3em rgba(27,31,35,0.15);
+}
+
+.octicon {
+    vertical-align: text-bottom;
+}
+
+.count-btn {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff;
+    font-size: 10px;
+    padding: 0 5px;
+    border: 1px solid #d1d2d3;
+    border-radius: 0.25em;
+    margin-left: 5px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.count-btn:hover {
+    color: #0366d6;
+}
+
+.count-btn b, .count-btn i {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: -4px;
+    border: 4px solid #0000;
+}
+
+.count-btn b {
+    margin-right: 0;
+    border-right-color: #d1d2d3;
+}
+
+.count-btn i {
+    margin-right: -1.5px;
+    border-right-color: #fff;
+}

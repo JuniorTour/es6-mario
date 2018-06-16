@@ -1,5 +1,4 @@
 import '../css/main.css';
-import '../css/controller.css';
 /*TODO: CSS import in JS, I don't like it.*/
 
 import Timer from './Timer.js';
