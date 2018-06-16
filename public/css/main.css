@@ -5,6 +5,9 @@ body {
     color: #fff;
     background-color: black;
     margin: 0;
+    user-select:none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 a {

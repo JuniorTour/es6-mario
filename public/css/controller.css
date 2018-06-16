@@ -29,7 +29,6 @@
     font-size: 18px;
     text-align: center;
     line-height: 1;
-    user-select:none;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
@@ -43,15 +42,16 @@
 .controller:active.triangle-left:after {
     right: -6px;
 }
-.triangle:active {
-    background-color: transparent;
-}
 
 .triangle {
     width: 40px;
     height: 40px;
     position: relative;
     border-right: 2px solid #fff;
+}
+
+.triangle:active {
+    background-color: rgba(0,0,0,.5);
 }
 
 .triangle:after {

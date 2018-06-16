@@ -51,7 +51,7 @@ function recordEntities(level, levelSpec) {
 }
 
 function setupEntities(level, levelSpec) {
-    /*TODO: Major Performance Bottle Neck
+    /*DONE-TO-DO: Major Performance Bottle Neck
     *
     * In order to solve this bottle-neck, I have to change the logic of adding entity.
     * Only when an entity near the Camera or Player, then it will be added.

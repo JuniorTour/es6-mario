@@ -73,7 +73,7 @@ Able to implement the function, but I also found some problems.
 eg: Multiple Touch not Support??? **Done**
 
 
-- [] Compatibility Improve
+- [x] Compatibility Improve
 *
 * 0. Before compiled by Babel, Only chrome-61+ (Mainly because of the Async Function).
 * 1. After compiled by Babel,
@@ -123,7 +123,7 @@ https://gist.github.com/ufologist/50b4f2768126089c3e11
 
 ### Other
 
-- [] Mobile Magnifier
+- [x] Mobile Magnifier
 
 On Mobile Phone, long press will trigger a magnifier.
 
@@ -133,11 +133,22 @@ On Mobile Phone, long press will trigger a magnifier.
 
 ### BUG
 
-- [] 0. Collision Judgement Sequence Wrong
+- [x] 0. Collision Judgement Sequence Wrong
 
+In stomer.js:
  When Mario was bounded down by the bricks above his head, his vel.y will be -400,
  it is less than the vel.y of Goomba, so the Mario will be killed wrongly.
  After a deeper researching, I found the real cause is the trigger sequence of Stomer and Goomba's collides.
  The right sequence should be 1. Goomba's collides => 2. Stomer's debounce.
  But, on the contrary, the sequence usually is Stomer => Goomba, so Mario usually is killed wrongly.
 
+
+### High Order
+
+- [] Mobile Landscape Fullscreen support
+
+For mobile safari, think about the slide to hide ui bar hack.
+
+- [] Optimize Entity respawn logic
+
+- [] Sound Effec

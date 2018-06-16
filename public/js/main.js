@@ -52,7 +52,6 @@ async function main(canvas) {
     // level.comp.layers.push(createCameraLayer(camera));
     // setupMouseControl(canvas, mario, camera);
 
-    // TODO Optimize Hack for Compatibility
     let fps = 1/60;
 
     const uaInfo = getUserAgent();
