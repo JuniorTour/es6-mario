@@ -1,5 +1,5 @@
 
-export const thirtyBlocks = 320;
+export const thirtyBlocks = 480;
 
 function lookForEntity(levelEntities, targetEntity) {
     let ret = false;
@@ -66,32 +66,40 @@ function deleteUselessEntities(level, camera) {
         const entityNearCamera = calculatePosFromCamera(entity.pos, camera.pos);
 
         if (!entityNearCamera && entity.killable !== undefined) {
+            debugger
             level.entities.delete(entity);
 
             // TODO: Optimize check point logic, can not got checked sometimes.
-            level.checkEntitiesPoints.push(entity.pos.x - 301);
-            level.checkEntitiesPoints.push(entity.pos.x - 300);
-            level.checkEntitiesPoints.push(entity.pos.x - 299);
+            // level.checkEntitiesPoints.push(entity.pos.x - 301);
+            // level.checkEntitiesPoints.push(entity.pos.x - 300);
+            // level.checkEntitiesPoints.push(entity.pos.x - 299);
 
             level.toBeAddedEntities.push({
                 hashId: entity.hashId
             });
+
             console.log('deleteUselessEntities; levelEntities.size = ', level.entities.size);
+
         }
     })
 }
 
-export function controlEntities(camera, level, entityFactory) {
-    let intCameraPosX = Math.floor(camera.pos.x);
+/*TODO: Think about other Implementation:
+* 1. Add an trait to entity, which can be used to detect whether to add itself in each frame.
+* 2. Move the task of adding entities to EntityCheckPoint, when it collides with player, add the entities nearby.
+* 3. Below, checkEntities frequently.*/
 
-    const checkEntitiesPointIndex = level.checkEntitiesPoints.indexOf(intCameraPosX);
-    const nearCheckEntitiesPoint = checkEntitiesPointIndex !== -1;
-    if (nearCheckEntitiesPoint) {
-        level.checkEntitiesPoints.splice(checkEntitiesPointIndex, 1);
+export function controlEntities(camera, level, entityFactory) {
+    // let intCameraPosX = Math.floor(camera.pos.x);
+    //
+    // const checkEntitiesPointIndex = level.checkEntitiesPoints.indexOf(intCameraPosX);
+    // const nearCheckEntitiesPoint = checkEntitiesPointIndex !== -1;
+    // if (nearCheckEntitiesPoint) {
+    //     level.checkEntitiesPoints.splice(checkEntitiesPointIndex, 1);
         // 最理想的状态是，只有当“需要”添加实体时，才检测一次，
         // 一个关卡有几个实体，就只有几次 checkEntities
         console.log('checkEntities');
         checkEntities(level, entityFactory, camera);
         deleteUselessEntities(level, camera);
-    }
+    // }
 }

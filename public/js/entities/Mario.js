@@ -44,7 +44,7 @@ function createMarioFactory(sprite) {
     return function createMario() {
         const mario = new Entity();
         mario.size.set(14, 16);
-        mario.name = 'mario';
+        mario.type = 'player';
 
         mario.addTrait(new Physics());
         mario.addTrait(new Solid());

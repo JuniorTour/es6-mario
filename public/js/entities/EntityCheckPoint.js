@@ -1,5 +1,6 @@
 import Entity from '../Entity.js';
 import {Trait} from '../Entity.js';
+import {controlEntities} from '../entitiesControlSystem.js';
 
 class Behaviour extends Trait {
     constructor() {
@@ -8,9 +9,11 @@ class Behaviour extends Trait {
 
     collides(us, them, levelEntities) {
 
-        if (them.name === 'mario') {
+        if (them.type === 'player') {
             console.log('mario collides entity check point');
             levelEntities.delete(us);
+
+            controlEntities(them, window.level, window.level.entityFactory);
         }
     }
 }

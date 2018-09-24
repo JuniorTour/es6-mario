@@ -36,7 +36,12 @@ async function main(canvas) {
     const loadLevel = await createLevelLoader();
     const level = await loadLevel('1-1');
 
+    level.entityFactory = entityFactory;
+    window.level = level;
+
     const camera = new Camera();
+
+    window.camera = camera;
 
     const mario = entityFactory.mario();
     mario.pos.set(2.5*16, 12*16);
@@ -83,7 +88,7 @@ async function main(canvas) {
 
         level.comp.draw(context, camera);
 
-        controlEntities(camera, level, entityFactory)
+        // controlEntities(camera, level, entityFactory)
     };
 
     timer.start();

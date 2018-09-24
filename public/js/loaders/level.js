@@ -30,6 +30,8 @@ function recordEntities(level, levelSpec) {
     level.checkEntitiesPoints = [];
     level.checkEntitiesPointsPosX = [];
 
+    level.entities.add(createEntityCheckPoint(2.5 * 16));
+
     levelSpec.entities.forEach(({name, positions}) => {
         positions.forEach(gridPos => {
             const hashId = `${level.toBeAddedEntities.length}`;
@@ -49,28 +51,29 @@ function recordEntities(level, levelSpec) {
             // level.checkEntitiesPoints.push(gridPos[0] * 16 - 301);
             // level.checkEntitiesPoints.push(gridPos[0] * 16 - 300);
             // level.checkEntitiesPoints.push(gridPos[0] * 16 - 299);
+
             // debugger
-            let checkPosX= pos.x - thirtyBlocks;
+            let checkPosX= pos.x - 300;
             const initialPos = 2.5 * 16;
             if (checkPosX < initialPos) {
                 checkPosX = 11 * 16;
             }
 
             let noNearCheckPoint = true;
-            level.checkEntitiesPointsPosX.forEach(existCheckPosX => {
-                if (existCheckPosX > (checkPosX - thirtyBlocks) &&
-                     existCheckPosX < (checkPosX + thirtyBlocks)) {
-                    noNearCheckPoint = false;
-                }
-            });
+            // level.checkEntitiesPointsPosX.forEach(existCheckPosX => {
+            //     if (existCheckPosX > (checkPosX - thirtyBlocks) &&
+            //          existCheckPosX < (checkPosX + thirtyBlocks)) {
+            //         noNearCheckPoint = false;
+            //     }
+            // });
 
             if (noNearCheckPoint) {
                 level.entities.add(createEntityCheckPoint(checkPosX));
-                level.checkEntitiesPointsPosX.push(checkPosX);
+                // level.checkEntitiesPointsPosX.push(checkPosX);
             }
 
         })
-    })
+    });
 
     level.entitiesRecord = JSON.parse(JSON.stringify(level.toBeAddedEntities));
 }
