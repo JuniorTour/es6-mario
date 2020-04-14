@@ -1,5 +1,6 @@
 import {Vec2} from './math.js'
 import BoundingBox from './BoundingBox.js'
+import AudioBoard from "./AudioBoard";
 
 export const Sides = {
     LEFT: Symbol('left'),
@@ -12,7 +13,15 @@ export class Trait {
     constructor(name) {
         this.NAME = name;
 
+        this.sounds = new Set() // profit is in Stomer.js line@33
         this.tasks = [];
+    }
+
+    playSounds(audioBoard, audioContext) {
+        this.sounds.forEach(name => {
+            audioBoard.playAudio(name, audioContext)
+        })
+        this.sounds.clear()
     }
 
     finalize() {
@@ -41,6 +50,7 @@ export default class Entity {
     constructor() {
         this.canCollides = true;
 
+        this.audio = new AudioBoard()
         this.pos = new Vec2(0,0);
         this.vel = new Vec2(0,0);
         this.size = new Vec2(0,0);
@@ -79,11 +89,12 @@ export default class Entity {
 
     }
 
-    update(deltaTime, level) {
+    update(gameContext, level) {
         this.traits.forEach(trait => {
-            trait.update(this, deltaTime, level);
+            trait.update(this, gameContext, level);
+            trait.playSounds(this.audio, gameContext.audioContext)
         });
 
-        this.lifeTime +=deltaTime;
+        this.lifeTime += gameContext.deltaTime;
     }
 }

@@ -115,7 +115,7 @@ module.exports = {
             }
         )
     ],
-    devtool: 'inline-source-map',
+    devtool: 'eval',
     devServer: {
         contentBase: '../',
         compress: true,

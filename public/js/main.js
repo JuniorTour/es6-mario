@@ -5,7 +5,9 @@ import '../css/controller.css';
 import Timer from './Timer.js';
 import Camera from './Camera.js';
 import Entity from './Entity.js';
+import AudioBoard from './AudioBoard'
 import PlayerController from './traits/PlayerController.js';
+import {createAudioLoader} from './loaders/audio.js';
 import {createLevelLoader} from './loaders/level.js';
 import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
@@ -30,8 +32,9 @@ function createPlayerEnv(playerEntity) {
 async function main(canvas) {
     const context = canvas.getContext('2d');
 
+    const audioContext = new window.AudioContext()
     const [entityFactory, font] = await Promise.all([
-        loadEntities(),
+        loadEntities(audioContext),
         loadFont()
     ]);
     const loadLevel = await createLevelLoader(entityFactory);
@@ -76,10 +79,17 @@ async function main(canvas) {
         input.listenTo(window);
     }
 
+    const gameContext = {
+        deltaTime: undefined,
+        audioContext
+        // audioBoard
+    }
+
     const timer = new Timer(fps);
 
     timer.update = function update(deltaTime) {
-        level.update(deltaTime);
+        gameContext.deltaTime = deltaTime
+        level.update(gameContext);
 
         camera.pos.x = Math.max(0, mario.pos.x - 100);
 
@@ -91,4 +101,8 @@ async function main(canvas) {
 
 
 const canvas = document.getElementById('screen');
-main(canvas);
+const start = () => {
+    window.removeEventListener('click', start)
+    main(canvas)
+}
+window.addEventListener('click', start)
