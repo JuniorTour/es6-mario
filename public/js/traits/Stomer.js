@@ -26,7 +26,8 @@ export default class Stomer extends Trait {
             this.bounce(us, them);
             // this.didStomp = true
             this.sounds.add('stomp')
-            this.onStomp(us, them);
+            // this.onStomp(us, them);
+            this.events.emit('stomp')
         }
     }
 

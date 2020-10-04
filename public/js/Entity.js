@@ -1,6 +1,7 @@
 import {Vec2} from './math.js'
 import BoundingBox from './BoundingBox.js'
 import AudioBoard from "./AudioBoard";
+import EvenEmitter from "./EventEmitter";
 
 export const Sides = {
     LEFT: Symbol('left'),
@@ -14,6 +15,7 @@ export class Trait {
         this.NAME = name;
 
         this.sounds = new Set() // profit is in Stomer.js line@33
+        this.events = new EvenEmitter()
         this.tasks = [];
     }
 
