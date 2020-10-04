@@ -30,6 +30,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 *
 * */
 
+const env = process.env.NODE_ENV
+const envIsDev = env === 'development'
+// console.log('************')
+// console.log(env)
+// console.log(envIsDev)
+// console.log('************')
+
 
 module.exports = {
     entry: ['whatwg-fetch', './public/js/main.js'],
@@ -110,12 +117,11 @@ module.exports = {
         new UglifyJSPlugin(
             {
                 // sourceMap: true
-                /*TODO: ENV
-                * With sourceMap, the bundle is 490kb, otherwise 77kb.*/
+                /* With sourceMap, the bundle is 490kb, otherwise 77kb.*/
             }
         )
     ],
-    devtool: 'eval',
+    devtool: envIsDev ? 'eval' : false,
     devServer: {
         contentBase: '../',
         compress: true,
