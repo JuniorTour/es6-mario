@@ -14,16 +14,8 @@ export class Trait {
     constructor(name) {
         this.NAME = name;
 
-        this.sounds = new Set() // profit is in Stomer.js line@33
         this.events = new EvenEmitter()
         this.tasks = [];
-    }
-
-    playSounds(audioBoard, audioContext) {
-        this.sounds.forEach(name => {
-            audioBoard.playAudio(name, audioContext)
-        })
-        this.sounds.clear()
     }
 
     finalize() {
@@ -53,6 +45,7 @@ export default class Entity {
         this.canCollides = true;
 
         this.audio = new AudioBoard()
+        this.sounds = new Set()
         this.pos = new Vec2(0,0);
         this.vel = new Vec2(0,0);
         this.size = new Vec2(0,0);
@@ -61,6 +54,13 @@ export default class Entity {
         this.lifeTime = 0;
 
         this.traits = [];
+    }
+
+    playSounds(audioBoard, audioContext) {
+        this.sounds.forEach(name => {
+            audioBoard.playAudio(name, audioContext)
+        })
+        this.sounds.clear()
     }
 
     addTrait(trait) {
@@ -94,8 +94,9 @@ export default class Entity {
     update(gameContext, level) {
         this.traits.forEach(trait => {
             trait.update(this, gameContext, level);
-            trait.playSounds(this.audio, gameContext.audioContext)
         });
+
+        this.playSounds(this.audio, gameContext.audioContext)
 
         this.lifeTime += gameContext.deltaTime;
     }

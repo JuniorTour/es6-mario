@@ -4,10 +4,6 @@ import '../css/controller.css';
 
 import Timer from './Timer.js';
 import Camera from './Camera.js';
-import Entity from './Entity.js';
-import AudioBoard from './AudioBoard'
-import PlayerController from './traits/PlayerController.js';
-import {createAudioLoader} from './loaders/audio.js';
 import {createLevelLoader} from './loaders/level.js';
 import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
@@ -15,19 +11,11 @@ import {createDashboardLayer} from './layers/dashboard.js';
 import {setupTouchPad, setupKeyboard} from './input/input.js';
 import {getUserAgent} from './polyfills/getUserAgent.js';
 import {autoPlayOniOS} from './polyfills/autoPlayOniOS.js';
-import {createCollisionLayer} from './layers/collision.js'
+import {createPlayerEnv, createPlayer} from "./player";
+// import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
-
-function createPlayerEnv(playerEntity) {
-    const playerEnv = new Entity();
-    const playerControl = new PlayerController();
-    playerControl.setPlayer(playerEntity);
-    playerEnv.addTrait(playerControl);
-
-    return playerEnv;
-}
 
 async function main(canvas) {
     const context = canvas.getContext('2d');
@@ -42,7 +30,7 @@ async function main(canvas) {
 
     const camera = new Camera();
 
-    const mario = entityFactory.mario();
+    const mario = createPlayer(entityFactory.mario());
     mario.pos.set(4*16, 12*16);
     level.entities.add(mario);
 
