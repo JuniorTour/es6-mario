@@ -12,12 +12,15 @@ import {setupTouchPad, setupKeyboard} from './input/input.js';
 import {getUserAgent} from './polyfills/getUserAgent.js';
 import {autoPlayOniOS} from './polyfills/autoPlayOniOS.js';
 import {createPlayerEnv, createPlayer} from "./player";
+import {loadImage} from "./loader";
+import {createWaitingLayer} from "./layers/wating";
 // import {createCollisionLayer} from './layers/collision.js'
 // import {createCameraLayer} from './layers/camera.js';
 // import {setupMouseControl} from './debug.js';
 
+let curRunningGameTimer = null
 
-async function main(canvas) {
+async function main(canvas, isWaitingScreen) {
     const context = canvas.getContext('2d');
 
     const audioContext = new window.AudioContext()
@@ -37,7 +40,12 @@ async function main(canvas) {
     const playerEnv = createPlayerEnv(mario);
     level.entities.add(playerEnv);
 
-    level.comp.layers.push(createDashboardLayer(font, playerEnv));
+    level.comp.layers.push(createDashboardLayer(font, playerEnv, isWaitingScreen));
+
+    if (isWaitingScreen) {
+        const logoImg = await loadImage('/assets/img/logo.png')
+        level.comp.layers.push(createWaitingLayer(font, logoImg));
+    }
 
     /*Debug Tools : */
     // level.comp.layers.push(createCollisionLayer(level));
@@ -50,7 +58,9 @@ async function main(canvas) {
     const uaInfo = getUserAgent();
     if (uaInfo.platform === 'Android' ||
         uaInfo.platform === 'iOS') {
-        setupTouchPad(mario);
+        if (!isWaitingScreen) {
+            setupTouchPad(mario);
+        }
 
         // For low-end device, decrease fps for performance.
         if ((uaInfo.platform === 'iOS' && uaInfo.ver < 10)
@@ -63,8 +73,10 @@ async function main(canvas) {
         }
     } else {
         // TODO: listen to window.onresize???
-        const input = setupKeyboard(mario);
-        input.listenTo(window);
+        if (!isWaitingScreen) {
+            const input = setupKeyboard(mario);
+            input.listenTo(window);
+        }
     }
 
     const gameContext = {
@@ -85,14 +97,37 @@ async function main(canvas) {
     };
 
     timer.start();
-    level.music.player.playTrack('main')
+    if (!isWaitingScreen) {
+        level.music.player.playTrack('main')
+    }
+
+    curRunningGameTimer = timer
 }
 
 
 const canvas = document.getElementById('screen');
+
+const startWaitingScreen = () => {
+    main(canvas, true)
+}
+startWaitingScreen()
+
+
 const start = () => {
     window.removeEventListener('click', start)
+
+    if (curRunningGameTimer && curRunningGameTimer.stop) {
+        curRunningGameTimer.stop()
+    }
+
+    document.body.removeChild(canvas)
+    const newCanvas = document.createElement('canvas');
+    newCanvas.id = 'screen';
+    newCanvas.width='256'
+    newCanvas.height='240'
+    document.body.appendChild(newCanvas);
+
     // Auto Play audio will not take effect unless after user interact.
-    main(canvas)
+    main(newCanvas)
 }
 window.addEventListener('click', start)

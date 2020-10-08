@@ -21,8 +21,8 @@ export function loadAudioBoard(name, audioContext) {
     const loadAudio = createAudioLoader(audioContext)
     return loadJSON(`/assets/sound/${name}.json`)
         .then(audioSheet => {
-            console.log(audioSheet)
-            console.log(audioContext)
+            // console.log(audioSheet)
+            // console.log(audioContext)
             const audioBoard = new AudioBoard()
             const fx = audioSheet.fx
             const jobs = []
