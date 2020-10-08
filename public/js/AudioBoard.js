@@ -12,7 +12,13 @@ export default class AudioBoard {
 
     playAudio(name, audioContext) {
         const source = audioContext.createBufferSource()
-        source.connect(audioContext.destination)
+
+        const gainNode = audioContext.createGain();
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        source.connect(gainNode)
+        gainNode.connect(audioContext.destination);
+
+        // source.connect(audioContext.destination)
         source.buffer = this.buffers.get(name)
         source.start(0)
     }

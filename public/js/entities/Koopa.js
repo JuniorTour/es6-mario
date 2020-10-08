@@ -1,5 +1,5 @@
 import Entity, {Sides, Trait} from '../Entity.js';
-import {loadSpriteSheet} from '../loader.js';
+import {loadSpriteSheet} from '../loaders/sprite.js';
 import PendulumWalk from '../traits/PendulumMove.js';
 import Solid from '../traits/Solid.js'
 import Physics from '../traits/Physics.js'
@@ -88,7 +88,7 @@ class Behavior extends Trait {
         this.state = STATE_PANIC;
     }
 
-    update(us, deltaTime) {
+    update(us, {deltaTime}) {
         if (this.state === STATE_HIDING) {
             this.hideTime += deltaTime;
 

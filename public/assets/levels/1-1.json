@@ -1,5 +1,6 @@
 {
   "spriteSheet": "overworld",
+  "musicSheet": "overworld",
   "layers": [
     {
       "tiles": [
@@ -302,9 +303,7 @@
       "tiles": [
         {
           "pattern": "cannon-2h",
-          "ranges": [
-            []
-          ]
+          "ranges": []
         }
       ]
     }

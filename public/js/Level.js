@@ -1,6 +1,7 @@
 import Compositor from './compositor.js'
 import EntityCollider from './EntityCollider.js'
 import TileCollider from './TileCollider.js'
+import MusicController from "./MusicController";
 
 export default class Level {
     constructor() {
@@ -9,7 +10,7 @@ export default class Level {
         this.entities = new Set();
         this.entityCollider = new EntityCollider(this.entities);
         this.totalTime = 0;
-
+        this.music = new MusicController()
         this.tileCollider = null;
     }
 
