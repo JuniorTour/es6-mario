@@ -92,6 +92,7 @@ async function main(canvas) {
 const canvas = document.getElementById('screen');
 const start = () => {
     window.removeEventListener('click', start)
+    // Auto Play audio will not take effect unless after user interact.
     main(canvas)
 }
 window.addEventListener('click', start)
