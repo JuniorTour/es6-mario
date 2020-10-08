@@ -19,6 +19,18 @@ import {createWaitingLayer} from "./layers/wating";
 // import {setupMouseControl} from './debug.js';
 
 let curRunningGameTimer = null
+const startControlDemo = (totalTime, mario) => {
+    if (totalTime < 5) {
+        if (totalTime >= 3) {
+            mario.go.dir = 1
+        }
+        if (totalTime >= 4.2 && totalTime < 4.5) {
+            mario.jump.start()
+        }
+    } else {
+        mario.go.dir = totalTime.toFixed() % 2 ? 1: -1
+    }
+}
 
 async function main(canvas, isWaitingScreen) {
     const context = canvas.getContext('2d');
@@ -80,6 +92,7 @@ async function main(canvas, isWaitingScreen) {
     }
 
     const gameContext = {
+        accumulatedTime: 0,
         deltaTime: undefined,
         audioContext
         // audioBoard
@@ -88,12 +101,17 @@ async function main(canvas, isWaitingScreen) {
     const timer = new Timer(fps);
 
     timer.update = function update(deltaTime) {
+        gameContext.accumulatedTime += deltaTime
         gameContext.deltaTime = deltaTime
         level.update(gameContext);
 
         camera.pos.x = Math.max(0, mario.pos.x - 100);
 
         level.comp.draw(context, camera);
+
+        if (isWaitingScreen) {
+            startControlDemo(gameContext.accumulatedTime, mario)
+        }
     };
 
     timer.start();
@@ -107,11 +125,11 @@ async function main(canvas, isWaitingScreen) {
 
 const canvas = document.getElementById('screen');
 
+// TODO Destroy Canvas Ele is Not a good solution, consider runtime re-render.
 const startWaitingScreen = () => {
     main(canvas, true)
 }
 startWaitingScreen()
-
 
 const start = () => {
     window.removeEventListener('click', start)
