@@ -1,7 +1,3 @@
-TODO
-2020-04-11
-- Webapack Env
-
 # 🎮 ES6-Mario
 
 A web game written in ES6 syntax and HTML5 features, such as `Module, Canvas`.
@@ -204,7 +200,7 @@ import {loadBackgroundSprites, loadMarioSprite} from './sprites.js'
 | 3    | Original Map and Minor fix | 2018/3/1    |                                          |
 | 4    | Performance Optimize       | ......      | Try to run this game smoothly in low end device. |
 | 5    | Game Related Optimize      | ......      | Make this game more funny!               |
-| 6    | Webpack Env Config         | ......      |                                          |
+| 6    | Webpack Env Config         | 2020/9/27      | Something makes today special. |
 
 
 
