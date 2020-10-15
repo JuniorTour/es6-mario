@@ -3,8 +3,10 @@ export default class Compositor {
         this.layers = [];
     }
 
-    draw(context, camera) {
-        this.layers.forEach(layer => {
+    draw(threeLayersContext, camera) {
+        this.layers.forEach((layer, index) => {
+            const context = threeLayersContext[index]
+            context.clearRect(0,0, 256, 256)
             layer(context, camera);
         })
     }

@@ -32,8 +32,11 @@ const startControlDemo = (totalTime, mario) => {
     }
 }
 
-async function main(canvas, isWaitingScreen) {
-    const context = canvas.getContext('2d');
+async function main(canvasLayers, isWaitingScreen) {
+    const threeLayersContext = [].map.call(canvasLayers, canvas => {
+        return canvas.getContext('2d');
+    })
+    // const context = canvas.getContext('2d');
 
     const audioContext = new window.AudioContext()
     const [entityFactory, font] = await Promise.all([
@@ -107,7 +110,7 @@ async function main(canvas, isWaitingScreen) {
 
         camera.pos.x = Math.max(0, mario.pos.x - 100);
 
-        level.comp.draw(context, camera);
+        level.comp.draw(threeLayersContext, camera);
 
         if (isWaitingScreen) {
             startControlDemo(gameContext.accumulatedTime, mario)
@@ -123,29 +126,34 @@ async function main(canvas, isWaitingScreen) {
 }
 
 
-const canvas = document.getElementById('screen');
+const canvasLayers = document.querySelectorAll('.layer');
+main(canvasLayers)
 
-// TODO Destroy Canvas Ele is Not a good solution, consider runtime re-render.
-const startWaitingScreen = () => {
-    main(canvas, true)
+
+const layers = [...document.querySelectorAll('canvas')];
+var x = 0;
+var y = 0;
+let distance = 0;
+
+function update() {
+    layers.forEach((layer, i) => {
+        layer.style.transform = [
+            `rotateX(${y}deg)`,
+            `rotateY(${-x}deg)`,
+            `translateZ(${i * distance}px)`,
+        ].join(' ');
+    });
 }
-startWaitingScreen()
 
-const start = () => {
-    window.removeEventListener('click', start)
+document.addEventListener('mousewheel', event => {
+    distance += event.wheelDelta * 0.2;
+    update();
+});
 
-    if (curRunningGameTimer && curRunningGameTimer.stop) {
-        curRunningGameTimer.stop()
+document.addEventListener('mousemove', event => {
+    if (event.buttons === 1) {
+        x += event.movementX;
+        y += event.movementY;
+        update();
     }
-
-    document.body.removeChild(canvas)
-    const newCanvas = document.createElement('canvas');
-    newCanvas.id = 'screen';
-    newCanvas.width='256'
-    newCanvas.height='240'
-    document.body.appendChild(newCanvas);
-
-    // Auto Play audio will not take effect unless after user interact.
-    main(newCanvas)
-}
-window.addEventListener('click', start)
+});

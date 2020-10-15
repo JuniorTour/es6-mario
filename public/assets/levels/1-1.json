@@ -62,11 +62,7 @@
               15, 1
             ]
           ]
-        }
-      ]
-    },
-    {
-      "tiles":[
+        },
         {
           "pattern": "grass-single",
           "ranges": [
@@ -295,15 +291,6 @@
           "ranges": [
             [190, 8]
           ]
-        }
-
-      ]
-    },
-    {
-      "tiles": [
-        {
-          "pattern": "cannon-2h",
-          "ranges": []
         }
       ]
     }
