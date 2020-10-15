@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prod": "npm run build & node ./public/build/prod-server.js",
-    "dev": "webpack-dev-server --open --config ./public/build/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --config ./public/build/webpack.config.js",
     "build": "webpack --config ./public/build/webpack.config.js"
   },
   "keywords": [
@@ -21,6 +21,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",

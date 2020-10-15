@@ -24,7 +24,18 @@ export default class Stomer extends Trait {
 
         if ( us.vel.y > them.vel.y) {
             this.bounce(us, them);
-            this.onStomp(us, them);
+            // this.didStomp = true
+            us.sounds.add('stomp')
+            // this.onStomp(us, them);
+            this.events.emit('stomp')
         }
     }
+
+    // remove the didStomp in update is the profit we gain from this.sounds
+    // update(entity, { audioContext }) {
+    //     if (this.didStomp) {
+    //         // entity.audio.playAudio('stomp', audioContext)
+    //         this.didStomp = false
+    //     }
+    // }
 }

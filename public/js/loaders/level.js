@@ -1,8 +1,10 @@
 import {Matrix} from '../math.js'
 import Level from '../Level.js'
-import {loadJSON, loadSpriteSheet} from '../loader.js'
+import {loadJSON} from '../loader.js'
 import {createSpriteLayer} from '../layers/sprites.js'
 import {createBackgroundLayer} from '../layers/background.js'
+import {loadMusicSheet} from "./music";
+import {loadSpriteSheet} from "./sprite";
 
 function setupLevel(levelSpec, level) {
     const mergedCollisionGrid = levelSpec.layers.reduce((mergedTiles, layerSpec) => {
@@ -41,10 +43,13 @@ export function createLevelLoader(entityFactory) {
         return loadJSON(`../assets/levels/${name}.json`)
             .then(levelSpec => Promise.all([
                 levelSpec,
-                loadSpriteSheet(levelSpec.spriteSheet)
+                loadSpriteSheet(levelSpec.spriteSheet),
+                loadMusicSheet(levelSpec.musicSheet)
             ]))
-            .then(([levelSpec, backgroundSprites]) => {
+            .then(([levelSpec, backgroundSprites, musciPlayer]) => {
+                console.log(musciPlayer)
                 const level = new Level();
+                level.music.setPlayer(musciPlayer)
 
                 setupLevel(levelSpec, level);
                 setupBackground(levelSpec, level, backgroundSprites);

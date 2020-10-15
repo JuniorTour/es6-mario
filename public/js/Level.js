@@ -1,6 +1,7 @@
 import Compositor from './compositor.js'
 import EntityCollider from './EntityCollider.js'
 import TileCollider from './TileCollider.js'
+import MusicController from "./MusicController";
 
 export default class Level {
     constructor() {
@@ -9,7 +10,7 @@ export default class Level {
         this.entities = new Set();
         this.entityCollider = new EntityCollider(this.entities);
         this.totalTime = 0;
-
+        this.music = new MusicController()
         this.tileCollider = null;
     }
 
@@ -17,9 +18,9 @@ export default class Level {
         this.tileCollider = new TileCollider(matrix);
     }
 
-    update(deltaTime) {
+    update(gameContext) {
         this.entities.forEach(entity => {
-            entity.update(deltaTime, this);
+            entity.update(gameContext, this);
         });
 
 
@@ -29,6 +30,6 @@ export default class Level {
             this.entityCollider.check(entity);
         });
 
-        this.totalTime += deltaTime;
+        this.totalTime += gameContext.deltaTime;
     }
 }

@@ -7,17 +7,33 @@ import Killable from '../traits/Killable.js'
 import Solid from '../traits/Solid.js'
 import Physics from '../traits/Physics.js'
 // import PlayerController from '../traits/PlayerController.js'
-import {loadSpriteSheet} from '../loader.js';
+import {loadSpriteSheet} from '../loaders/sprite.js';
+import {loadAudioBoard} from "../loaders/audio";
 
 /*Name Convention:
 * 1. loadSomething is synchronous, createSomething is asynchronous.*/
 
-export function loadMario() {
-    return loadSpriteSheet('mario')
-        .then(createMarioFactory)
+export function loadMario(audioContext) {
+    // loadAudioBoard('mario', audioContext)
+    //     .then(audioBoard => {
+    //         console.log(audioBoard)
+    //     })
+    // return loadSpriteSheet('mario')
+    //     .then(createMarioFactory)
+    //     // .then((sprite) => {
+    //     //     return createMarioFactory(sprite)
+    //     // })
+
+    return Promise.all([
+        loadSpriteSheet('mario'),
+        loadAudioBoard('mario', audioContext),
+    ])
+        .then(([sprite, audio]) => {
+            return createMarioFactory(sprite, audio)
+        })
 }
 
-function createMarioFactory(sprite) {
+function createMarioFactory(sprite, audio) {
     const runAnim = sprite.animations.get("run");
 
         function frameRoute(mario) {
@@ -43,6 +59,7 @@ function createMarioFactory(sprite) {
 
     return function createMario() {
         const mario = new Entity();
+        mario.audio = audio
         mario.size.set(14, 16);
 
         mario.addTrait(new Physics());

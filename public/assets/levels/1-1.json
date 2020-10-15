@@ -1,5 +1,6 @@
 {
   "spriteSheet": "overworld",
+  "musicSheet": "overworld",
   "layers": [
     {
       "tiles": [
@@ -296,7 +297,14 @@
           ]
         }
 
-
+      ]
+    },
+    {
+      "tiles": [
+        {
+          "pattern": "cannon-2h",
+          "ranges": []
+        }
       ]
     }
   ],
@@ -655,6 +663,23 @@
         {
           "name": "castle-door-body",
           "ranges": [[2,1,4,1]]
+        }
+      ]
+    },
+
+    "cannon-2h": {
+      "tiles": [
+        {
+          "name": "cannon-1",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "name": "cannon-2",
+          "ranges": [
+            [0, 1]
+          ]
         }
       ]
     }

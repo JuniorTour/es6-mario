@@ -30,55 +30,66 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 *
 * */
 
+const env = process.env.NODE_ENV
+const envIsDev = env === 'development'
+// console.log('************')
+// console.log(env)
+// console.log(envIsDev)
+// console.log('************')
+
+let loaders = [
+    {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: [
+                {
+                    loader: 'css-loader',
+                    options: {
+                        url:false,
+                        minimize: true,
+                        sourceMap: true
+                    }
+                }
+            ]
+        })
+    },
+    {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    // this path is relative to the output path
+                    outputPath: './img'
+                }
+            }
+        ]
+    }
+]
+
+if (!envIsDev) {
+    loaders.push({
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                // When specific use babel loader,
+                // Webpack will automatically find the .babelrc file in the root path
+                // options: {
+                //     presets: ['babel-preset-env'],
+                //  Without babel-preset-env async function wont be compiled.
+                // See : https://babeljs.io/docs/usage/caveats/#polyfills
+                //     plugins: ['babel-plugin-transform-runtime']
+                // }
+            }
+        })
+}
 
 module.exports = {
     entry: ['whatwg-fetch', './public/js/main.js'],
     module: {
-       rules: [
-            {
-               test: /\.js$/,
-               exclude: /(node_modules|bower_components)/,
-               use: {
-                   loader: 'babel-loader',
-                   // When specific use babel loader,
-                   // Webpack will automatically find the .babelrc file in the root path
-                   // options: {
-                   //     presets: ['babel-preset-env'],
-                   //  Without babel-preset-env async function wont be compiled.
-                   // See : https://babeljs.io/docs/usage/caveats/#polyfills
-                   //     plugins: ['babel-plugin-transform-runtime']
-                   // }
-               }
-            },
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                url:false,
-                                minimize: true,
-                                sourceMap: true
-                            }
-                        }
-                    ]
-                })
-            },
-           {
-               test: /\.(png|svg|jpg|gif)$/,
-               use: [
-                   {
-                       loader: 'file-loader',
-                       options: {
-                           // this path is relative to the output path
-                           outputPath: './img'
-                       }
-                   }
-               ]
-           }
-       ]
+       rules: loaders
     },
     plugins: [
         new CleanWebpackPlugin(
@@ -110,12 +121,11 @@ module.exports = {
         new UglifyJSPlugin(
             {
                 // sourceMap: true
-                /*TODO: ENV
-                * With sourceMap, the bundle is 490kb, otherwise 77kb.*/
+                /* With sourceMap, the bundle is 490kb, otherwise 77kb.*/
             }
         )
     ],
-    devtool: 'inline-source-map',
+    devtool: envIsDev ? 'eval' : false,
     devServer: {
         contentBase: '../',
         compress: true,

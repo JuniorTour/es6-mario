@@ -1,5 +1,7 @@
 export default class Timer {
     constructor(deltaTime = 1/60) {
+        this.animationFrameID = null
+
         let accumulatedTime = 0;
         let lastTime = 0;
 
@@ -27,10 +29,16 @@ export default class Timer {
     }
 
     enqueue() {
-        requestAnimationFrame(this.updateProxy);
+        this.animationFrameID = requestAnimationFrame(this.updateProxy);
     }
 
     start() {
         this.enqueue();
+    }
+
+    stop() {
+        if (this.animationFrameID) {
+            window.cancelAnimationFrame(this.animationFrameID)
+        }
     }
 }

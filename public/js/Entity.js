@@ -1,5 +1,7 @@
 import {Vec2} from './math.js'
 import BoundingBox from './BoundingBox.js'
+import AudioBoard from "./AudioBoard";
+import EvenEmitter from "./EventEmitter";
 
 export const Sides = {
     LEFT: Symbol('left'),
@@ -12,6 +14,7 @@ export class Trait {
     constructor(name) {
         this.NAME = name;
 
+        this.events = new EvenEmitter()
         this.tasks = [];
     }
 
@@ -41,6 +44,8 @@ export default class Entity {
     constructor() {
         this.canCollides = true;
 
+        this.audio = new AudioBoard()
+        this.sounds = new Set()
         this.pos = new Vec2(0,0);
         this.vel = new Vec2(0,0);
         this.size = new Vec2(0,0);
@@ -49,6 +54,13 @@ export default class Entity {
         this.lifeTime = 0;
 
         this.traits = [];
+    }
+
+    playSounds(audioBoard, audioContext) {
+        this.sounds.forEach(name => {
+            audioBoard.playAudio(name, audioContext)
+        })
+        this.sounds.clear()
     }
 
     addTrait(trait) {
@@ -79,11 +91,13 @@ export default class Entity {
 
     }
 
-    update(deltaTime, level) {
+    update(gameContext, level) {
         this.traits.forEach(trait => {
-            trait.update(this, deltaTime, level);
+            trait.update(this, gameContext, level);
         });
 
-        this.lifeTime +=deltaTime;
+        this.playSounds(this.audio, gameContext.audioContext)
+
+        this.lifeTime += gameContext.deltaTime;
     }
 }
