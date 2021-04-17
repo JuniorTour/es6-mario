@@ -12,6 +12,6 @@ export default class MusicPlayer {
 
     playTrack(name) {
         const audio = this.tracks.get(name)
-        audio.play()
+        // audio.play()
     }
 }

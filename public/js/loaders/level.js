@@ -47,7 +47,6 @@ export function createLevelLoader(entityFactory) {
                 loadMusicSheet(levelSpec.musicSheet)
             ]))
             .then(([levelSpec, backgroundSprites, musciPlayer]) => {
-                console.log(musciPlayer)
                 const level = new Level();
                 level.music.setPlayer(musciPlayer)
 

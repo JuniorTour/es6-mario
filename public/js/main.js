@@ -148,4 +148,8 @@ const start = () => {
     // Auto Play audio will not take effect unless after user interact.
     main(newCanvas)
 }
-window.addEventListener('click', start)
+
+window.startGame = start
+// window.addEventListener('click', start)
+
+import './ai/index'

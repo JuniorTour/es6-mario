@@ -17,7 +17,7 @@ body {
         Mobile Safari-NO,
          Android-41+*/
     display: block;
-    height:100vh;
+    height: 70vh;
     /*Support Good:
     Safari Mobile-6.0,
     Chrome-20,
@@ -72,6 +72,104 @@ body {
     margin-bottom: 6px;
 }
 
+.tip-modal {
+    width: 100%;
+    height: 300px;
+    position: fixed;
+    top: 999em;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.9);
+    color: #3a3a3a;
+}
+
+.ai-panel {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px;
+}
+
+button#play {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    position: fixed;
+    left: 12px;
+    bottom: 300px;
+}
+
+.ai-controller-container {
+    display: flex;
+    height: 150px;
+    margin: 0 12px;
+}
+
+.webcam-box-inner {
+    border-radius: 50%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.example-img-wrapper .highlight {
+    outline: 4px solid #4da8c0;
+    z-index: 1;
+}
+
+.example-img-wrapper {
+    position: relative;
+    width: 200px;
+    height: 80px;
+}
+
+.example-img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+}
+
+.example-img-wrapper img:nth-child(1) {
+    transform: rotate(-45deg);
+    left: 0px;
+}
+.example-img-wrapper img:nth-child(2) {
+    transform: rotate(-30deg);
+    left: 15px;
+}
+.example-img-wrapper img:nth-child(3) {
+    transform: rotate(-15deg);
+    left: 30px;
+}
+.example-img-wrapper img:nth-child(4) {
+    transform: rotate(0deg);
+    left: 45px;
+}
+.example-img-wrapper img:nth-child(5) {
+    transform: rotate(15deg);
+    left: 60px;
+}
+.example-img-wrapper img:nth-child(6) {
+    transform: rotate(30deg);
+    left: 75px;
+}
+.example-img-wrapper img:nth-child(7) {
+    transform: rotate(45deg);
+    left: 90px;
+}
+.example-img-wrapper img:nth-child(8) {
+    transform: rotate(60deg);
+    left: 105px;
+}
+
 /* iPad Pro : 768*1024*/
 @media (max-width: 1024px) and (orientation:portrait) {
     #screen {
@@ -94,6 +192,6 @@ body {
 @media (max-width: 1024px) and (orientation:landscape) {
     #screen {
         width: auto;
-        height:100vh;
+        height: 70vh;
     }
 }

@@ -17,11 +17,12 @@
   "author": "juniortour",
   "license": "MIT",
   "dependencies": {
+    "@tensorflow/tfjs-data": "^3.3.0",
     "babel-runtime": "^6.26.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
+    "@tensorflow/tfjs": "^3.3.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -29,6 +30,7 @@
     "clean-webpack-plugin": "^0.1.18",
     "compression-webpack-plugin": "^1.1.10",
     "copy-webpack-plugin": "^4.4.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^0.28.10",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",

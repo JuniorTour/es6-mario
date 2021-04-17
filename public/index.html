@@ -15,25 +15,51 @@
         Your browser doesn't support canvas natively.
     </canvas>
 
-    <div class="controller-wrapper controller-wrapper-left">
-        <div id="left-btn" class="controller controller-arrow controller-arrow-left"></div>
-        <div id="right-btn" class="controller controller-arrow controller-arrow-right"></div>
-    </div>
-    <div class="controller-wrapper controller-wrapper-right ">
-        <div id="jump-btn" class="controller controller-circle controller-circle-large controller-arrow-top"
-                 data-key="jump"></div>
-    </div>
-
-<!--    <div class="audio-wrapper">-->
-<!--        &lt;!&ndash;TODO: After finish all the sound, consider a mute whole function&ndash;&gt;-->
-<!--        &lt;!&ndash;<button id="mute-btn" class="btn btn-circle-middle">Mute</button>&ndash;&gt;-->
-<!--        <audio src="./assets/sound/overworld.mp3" id="bgm" autoplay loop></audio>-->
+<!--    <div class="controller-wrapper controller-wrapper-left">-->
+<!--        <div id="left-btn" class="controller controller-arrow controller-arrow-left"></div>-->
+<!--        <div id="right-btn" class="controller controller-arrow controller-arrow-right"></div>-->
+<!--    </div>-->
+<!--    <div class="controller-wrapper controller-wrapper-right ">-->
+<!--        <div id="jump-btn" class="controller controller-circle controller-circle-large controller-arrow-top"-->
+<!--                 data-key="jump"></div>-->
 <!--    </div>-->
 
     <div class="github-btn-wrapper">
         <a class="github-button" href="https://github.com/JuniorTour" data-show-count="true" aria-label="Follow @JuniorTour on GitHub">@JuniorTour</a>
         <a class="github-button" href="https://github.com/JuniorTour/es6-mario" data-icon="octicon-star" data-show-count="true" aria-label="Star JuniorTour/es6-mario on GitHub">Star</a>
     </div>
+
+    <div class="ai-panel">
+        <button id="play">play</button>
+        <div class="ai-controller-container">
+            <div class="ai-controller-wrapper">
+                <div class="example-img-wrapper NoMove"></div>
+                <button id="controller-NoMove">controller-NoMove</button>
+            </div>
+            <div class="ai-controller-wrapper">
+                <div class="example-img-wrapper ArrowLeft"></div>
+                <button id="controller-left">controller-left</button>
+            </div>
+            <div class="ai-controller-wrapper">
+                <div class="example-img-wrapper ArrowUp"></div>
+                <button id="controller-up">controller-up</button>
+            </div>
+            <div class="ai-controller-wrapper">
+                <div class="example-img-wrapper ArrowRight"></div>
+                <button id="controller-right">controller-right</button>
+            </div>
+        </div>
+        <div class="webcam-box-inner">
+            <!--  size of video should be the same as mobileNet_v1..._224 -->
+            <video autoplay
+                   playsinline
+                   muted
+                   id="webcam"
+                   width="224"
+                   height="224"></video>
+        </div>
+    </div>
+    <div class="tip-modal"></div>
 
 
 <!--Bundled Script will be injected automatically like below in dev and prod env.-->
