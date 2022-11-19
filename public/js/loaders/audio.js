@@ -14,7 +14,7 @@
         })
 * */
 
-import {loadJSON} from "../loader";
+import {loadJSON, PUBLIC_PATH} from "../loader";
 import AudioBoard from "../AudioBoard";
 
 export function loadAudioBoard(name, audioContext) {
@@ -41,7 +41,7 @@ export function loadAudioBoard(name, audioContext) {
 
 export function createAudioLoader(context) {
     return function loadAudio(url) {
-        return fetch(url)
+        return fetch(PUBLIC_PATH + url)
             .then(resp => {
                 return resp.arrayBuffer()
             })

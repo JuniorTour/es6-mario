@@ -9,7 +9,11 @@ export function loadImage(url) {
     })
 }
 
+const IS_DEV = location.host.indexOf('github.io') < 0
+
+export const PUBLIC_PATH = IS_DEV ? '' : 'https://juniortour.github.io/es6-mario/public/dist'
+
 export function loadJSON(url) {
-    return fetch(url)
+    return fetch(PUBLIC_PATH + url)
         .then(r => r.json());
 }

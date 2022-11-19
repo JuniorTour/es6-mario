@@ -32,10 +32,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const env = process.env.NODE_ENV
 const envIsDev = env === 'development'
-// console.log('************')
-// console.log(env)
-// console.log(envIsDev)
-// console.log('************')
 
 let loaders = [
     {
@@ -135,6 +131,6 @@ module.exports = {
         filename: 'bundle.js',
         // this path should be an absolute path!
         path: path.resolve(__dirname, '../dist'),
-        publicPath: '/'
+        publicPath: './'
     }
 };
