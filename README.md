@@ -33,7 +33,7 @@ Many thanks to the author [@pomler](https://github.com/pomle), learned a lot fro
 
 # Scan to Play:
 
-![JuniorTour-ES6-Mario](https://user-images.githubusercontent.com/14243906/202845394-8014a9c3-ea82-4e6b-8e57-79f1dfbdf27e.png)
+![JuniorTour-ES6-Mario](https://user-images.githubusercontent.com/14243906/202845661-0f9923bd-55ad-4b9f-a774-40f6ae6bb8db.png)
 
 
 ### Gif Demo
