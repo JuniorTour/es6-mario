@@ -1,0 +1,714 @@
+{
+  "spriteSheet": "overworld",
+  "musicSheet": "overworld",
+  "layers": [
+    {
+      "tiles": [
+        {
+          "name": "sky",
+          "type": "sky",
+          "ranges": [
+            [
+              0, 212,
+              0, 14
+            ]
+          ]
+        },
+        {
+          "name": "ground",
+          "type": "ground",
+          "ranges": [
+            [
+              0, 212,
+              13, 2
+            ],
+            [-1, 1,
+              0,  13]
+          ]
+        },
+        {
+          "name": "sky",
+          "type": "hole",
+          "ranges": [
+            [
+              59, 2,
+              12, 3
+            ],
+            [
+              78, 3,
+              12, 3
+            ],
+            [
+              142, 2,
+              12, 3
+            ]
+          ]
+        },
+        {
+          "name": "sky",
+          "type": "ground",
+          "ranges": [
+            [
+              201, 1, 0, 13
+            ]
+          ]
+        },
+        {
+          "name": "sky",
+          "type": "death-border",
+          "ranges": [
+            [
+              0, 212,
+              15, 1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tiles":[
+        {
+          "pattern": "grass-single",
+          "ranges": [
+            [23, 12],
+            [32, 12],
+            [62, 12],
+            [81, 12],
+            [108, 12],
+            [126,12],
+            [146,12],
+            [155,12],
+            [193,12]
+          ]
+        },
+        {
+          "pattern": "grass-triple",
+          "ranges": [
+            [11, 12],
+            [49, 12],
+            [97, 12]
+          ]
+        },
+
+        {
+          "pattern": "hill-2h",
+          "ranges": [
+            [16, 11],
+            [54, 11],
+            [102, 11],
+            [149, 11],
+            [196, 11]
+          ]
+        },
+        {
+          "pattern": "hill-3h",
+          "ranges": [
+            [1, 10],
+            [39, 10],
+            [88, 10],
+            [134, 10],
+            [181, 10]
+          ]
+        },
+
+        {
+          "name": "bricks",
+          "type": "ground",
+          "ranges": [
+            [
+              20, 1,
+              9
+            ],
+            [
+              22, 1,
+              9
+            ],
+            [
+              24, 1,
+              9
+            ],
+
+            [
+              68, 3,
+              9
+            ],
+            [
+              71, 8,
+              5
+            ],
+            [
+              82, 3,
+              5
+            ],
+            [
+              85, 9
+            ],
+            [
+              91, 2,
+              9
+            ],
+            [
+              108, 7
+            ],
+            [
+              111, 3,
+              5
+            ],
+            [
+              117, 4,
+              5
+            ],
+            [
+              118, 2,
+              9
+            ],
+            [
+              156, 3,
+              9
+            ]
+          ]
+        },
+        {
+          "name": "chance",
+          "type": "ground",
+          "ranges": [
+            [16, 9],
+            [21, 9],
+            [22, 5],
+            [23, 9],
+
+            [69, 9],
+            [85, 5],
+
+            [99, 5],
+            [96, 9],
+            [99, 9],
+            [102, 9],
+
+            [118, 2, 5],
+
+            [158, 9]
+
+          ]
+        },
+
+        {
+          "name": "chocolate",
+          "type": "ground",
+          "ranges": [
+            [126, 1, 9],
+            [125, 2, 10],
+            [124, 3, 11],
+            [123, 4, 12],
+
+            [129, 1, 9],
+            [129, 2, 10],
+            [129, 3, 11],
+            [129, 4, 12],
+
+            [140, 2, 9],
+            [139, 3, 10],
+            [138, 4, 11],
+            [137, 5, 12],
+
+            [144, 1, 9],
+            [144, 2, 10],
+            [144, 3, 11],
+            [144, 4, 12],
+
+            [176, 2, 5],
+            [175, 3, 6],
+            [174, 4, 7],
+            [173, 5, 8],
+            [172, 6, 9],
+            [171, 7, 10],
+            [170, 8, 11],
+            [169, 9, 12],
+
+            [186, 12]
+          ]
+        },
+
+
+        {
+          "pattern": "cloud-single",
+          "ranges": [
+            [20, 2],
+            [36, 2],
+            [47, 3],
+            [58, 2],
+            [90, 2],
+            [95, 3],
+            [108, 3],
+            [118, 2],
+            [128, 3],
+            [142, 3],
+            [189, 3]
+          ]
+        },
+
+        {
+          "pattern": "cloud-double",
+          "ranges": [
+            [74, 1],
+            [170, 2]
+          ]
+        },
+
+        {
+          "pattern": "cloud-triple",
+          "ranges": [
+            [28, 3],
+            [67, 2],
+            [159, 3]
+          ]
+        },
+
+        {
+          "pattern": "pipe-2h",
+          "ranges": [
+            [28, 11],
+            [167, 11]
+          ]
+        },
+        {
+          "pattern": "pipe-3h",
+          "ranges": [
+            [36, 10]
+          ]
+        },
+        {
+          "pattern": "pipe-4h",
+          "ranges": [
+            [47, 9]
+          ]
+        },
+
+        {
+          "pattern": "terminal-flag",
+          "ranges": [
+            [186, 2]
+          ]
+        },
+        {
+          "pattern": "castle",
+          "ranges": [
+            [190, 8]
+          ]
+        }
+
+      ]
+    },
+    {
+      "tiles": [
+        {
+          "pattern": "cannon-2h",
+          "ranges": []
+        }
+      ]
+    }
+  ],
+  "patterns": {
+
+    "cloud-single": {
+      "tiles": [
+        {
+          "name": "cloud-1-1",
+          "ranges": [[0, 0]]
+        },
+        {
+          "name": "cloud-1-2",
+          "ranges": [[1, 0]]
+        },
+        {
+          "name": "cloud-1-3",
+          "ranges": [[2, 0]]
+        },
+        {
+          "name": "cloud-2-1",
+          "ranges": [[0, 1]]
+        },
+        {
+          "name": "cloud-2-2",
+          "ranges": [[1, 1]]
+        },
+        {
+          "name": "cloud-2-3",
+          "ranges": [[2, 1]]
+        }
+      ]
+    },
+
+    "cloud-double": {
+      "tiles": [
+        {
+          "name": "cloud-1-1",
+          "ranges": [[0, 0]]
+        },
+        {
+          "name": "cloud-1-2",
+          "ranges": [[1, 0]]
+        },
+        {
+          "name": "cloud-1-2",
+          "ranges": [[2, 0]]
+        },
+        {
+          "name": "cloud-1-3",
+          "ranges": [[3, 0]]
+        },
+        {
+          "name": "cloud-2-1",
+          "ranges": [[0, 1]]
+        },
+        {
+          "name": "cloud-2-2",
+          "ranges": [[1, 1]]
+        },
+        {
+          "name": "cloud-2-2",
+          "ranges": [[2, 1]]
+        },
+        {
+          "name": "cloud-2-3",
+          "ranges": [[3, 1]]
+        }
+      ]
+    },
+
+    "cloud-triple": {
+      "tiles": [
+        {
+          "name": "cloud-1-1",
+          "ranges": [[0, 0]]
+        },
+        {
+          "name": "cloud-1-2",
+          "ranges": [[1, 0]]
+        },
+        {
+          "name": "cloud-1-2",
+          "ranges": [[2, 0]]
+        },
+        {
+          "name": "cloud-1-2",
+          "ranges": [[3, 0]]
+        },
+        {
+          "name": "cloud-1-3",
+          "ranges": [[4, 0]]
+        },
+        {
+          "name": "cloud-2-1",
+          "ranges": [[0, 1]]
+        },
+        {
+          "name": "cloud-2-2",
+          "ranges": [[1, 1]]
+        },
+        {
+          "name": "cloud-2-2",
+          "ranges": [[2, 1]]
+        },
+        {
+          "name": "cloud-2-2",
+          "ranges": [[3, 1]]
+        },
+        {
+          "name": "cloud-2-3",
+          "ranges": [[4, 1]]
+        }
+      ]
+    },
+
+    "pipe-section-vert": {
+      "tiles": [
+        {
+          "name": "pipe-vert-left",
+          "type": "ground",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "name": "pipe-vert-right",
+          "type": "ground",
+          "ranges": [
+            [1, 0]
+          ]
+        }
+      ]
+    },
+
+    "pipe-cap-vert": {
+      "tiles": [
+        {
+          "name": "pipe-insert-vert-left",
+          "type": "ground",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "name": "pipe-insert-vert-right",
+          "type": "ground",
+          "ranges": [
+            [1, 0]
+          ]
+        }
+      ]
+    },
+
+    "pipe-2h": {
+      "tiles": [
+        {
+          "pattern": "pipe-cap-vert",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "pattern": "pipe-section-vert",
+          "ranges": [
+            [
+              0, 1,
+              1, 1
+            ]
+          ]
+        }
+      ]
+    },
+
+    "pipe-3h": {
+      "tiles": [
+        {
+          "pattern": "pipe-cap-vert",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "pattern": "pipe-section-vert",
+          "ranges": [
+            [
+              0, 1,
+              1, 2
+            ]
+          ]
+        }
+      ]
+    },
+
+    "pipe-4h": {
+      "tiles": [
+        {
+          "pattern": "pipe-cap-vert",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "pattern": "pipe-section-vert",
+          "ranges": [
+            [
+              0, 1,
+              1, 3
+            ]
+          ]
+        }
+      ]
+    },
+
+    "grass-single": {
+      "tiles": [
+        {
+          "name": "grass-1-1",
+          "ranges": [[0, 0]]
+        },
+        {
+          "name": "grass-1-2",
+          "ranges": [[1, 0]]
+        },
+        {
+          "name": "grass-1-3",
+          "ranges": [[2, 0]]
+        }
+      ]
+    },
+
+    "grass-triple": {
+      "tiles": [
+        {
+          "name": "grass-1-1",
+          "ranges": [[0, 0]]
+        },
+        {
+          "name": "grass-1-2",
+          "ranges": [[1, 0]]
+        },
+        {
+          "name": "grass-1-2",
+          "ranges": [[2, 0]]
+        },
+        {
+          "name": "grass-1-2",
+          "ranges": [[3, 0]]
+        },
+        {
+          "name": "grass-1-3",
+          "ranges": [[4, 0]]
+        }
+      ]
+    },
+
+    "hill-2h": {
+      "tiles": [
+        {
+          "name": "hill-top",
+          "ranges": [[1, 0]]
+        },
+        {
+          "name": "hill-2-1",
+          "ranges": [[0, 1]]
+        },
+        {
+          "name": "hill-2-2",
+          "ranges": [[1, 1]]
+        },
+        {
+          "name": "hill-2-3",
+          "ranges": [[2, 1]]
+        }
+      ]
+    },
+
+    "hill-3h": {
+      "tiles": [
+        {
+          "pattern": "hill-2h",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "name": "hill-2-1",
+          "ranges": [[-1, 2]]
+        },
+        {
+          "name": "hill-2-2",
+          "ranges": [[0, 2]]
+        },
+        {
+          "name": "hill-green",
+          "ranges": [[1, 2]]
+        },
+        {
+          "name": "hill-2-2",
+          "ranges": [[2, 2]]
+        },
+        {
+          "name": "hill-2-3",
+          "ranges": [[3, 2]]
+        }
+      ]
+    },
+
+    "terminal-flag": {
+      "tiles": [
+        {
+          "name": "flag-top",
+          "ranges": [[0, 0]]
+        },
+        {
+          "name": "flag-body",
+          "ranges": [[0, 1, 1, 9]]
+        }
+      ]
+    },
+
+    "castle": {
+      "tiles": [
+        {
+          "name": "castle-top",
+          "ranges": [[1, 3, 0]]
+        },
+        {
+          "name": "castle-window-left",
+          "ranges": [[1, 1]]
+        },
+        {
+          "name": "castle-window-right",
+          "ranges": [[3, 1]]
+        },
+        {
+          "name": "castle-wall",
+          "ranges": [[2, 1, 1, 2]]
+        },
+        {
+          "name": "castle-top",
+          "ranges": [[0, 5, 2]]
+        },
+        {
+          "name": "castle-top-filled",
+          "ranges": [[1, 3, 2]]
+        },
+        {
+          "name": "castle-wall",
+          "ranges": [[0, 5, 3, 2]]
+        },
+        {
+          "name": "castle-door-top",
+          "ranges": [[2,3]]
+        },
+        {
+          "name": "castle-door-body",
+          "ranges": [[2,1,4,1]]
+        }
+      ]
+    },
+
+    "cannon-2h": {
+      "tiles": [
+        {
+          "name": "cannon-1",
+          "ranges": [
+            [0, 0]
+          ]
+        },
+        {
+          "name": "cannon-2",
+          "ranges": [
+            [0, 1]
+          ]
+        }
+      ]
+    }
+
+  },
+
+  "entities": [
+    {
+      "name": "goomba",
+      "positions": [
+        [26, 12],
+
+        [42, 12],
+        [43, 12],
+
+        [70, 4],
+        [69, 4],
+
+        [166, 12],
+        [160, 12]
+      ]
+    },
+    {
+      "name": "koopa",
+      "positions": [
+        [124, 8],
+        [136, 8]
+      ]
+    }
+
+  ]
+}
