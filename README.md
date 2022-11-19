@@ -29,11 +29,11 @@ Many thanks to the author [@pomler](https://github.com/pomle), learned a lot fro
 
 ### Online Demo
 
-# [Click to Play es6-mario Online](http://juniortour.net:666/)
+# [Click to Play es6-mario Online](https://juniortour.github.io/es6-mario/public/dist/index.html)
 
 # Scan to Play:
 
-![QR-CODE-es6-mario](https://github.com/JuniorTour/es6-mario/blob/master/public/notes/demo-img/es6-mario-qr-code.png?raw=true)
+![JuniorTour-ES6-Mario](https://user-images.githubusercontent.com/14243906/202845394-8014a9c3-ea82-4e6b-8e57-79f1dfbdf27e.png)
 
 
 ### Gif Demo
